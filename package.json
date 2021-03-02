@@ -1,0 +1,13 @@
+{
+  "name": "api-ts-typeorm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:TutoDS/api-ts-typeorm.git",
+  "author": "Daniel Sousa @TutoDS <jdaniel.asousa@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^5.1.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  }
+}
