@@ -17,7 +17,7 @@
 	"author": "Daniel Sousa @TutoDS <jdaniel.asousa@gmail.com>",
 	"license": "MIT",
 	"scripts": {
-		"dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
+		"dev": "tsnd --inspect --transpile-only --ignore-watch node_modules -r tsconfig-paths/register src/shared/http/server.ts",
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "eslint . --ext .ts --fix",
 		"format": "prettier --write ."
@@ -41,6 +41,7 @@
 		"lint-staged": "^10.5.4",
 		"prettier": "^2.2.1",
 		"ts-node-dev": "^1.1.6",
+		"tsconfig-paths": "^3.9.0",
 		"typescript": "^4.2.2"
 	},
 	"lint-staged": {
