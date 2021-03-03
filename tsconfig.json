@@ -1,0 +1,33 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "commonjs",
+		"lib": [
+			"es2017"
+		],
+		"allowJs": true,
+		"outDir": "build",
+		"rootDir": "src",
+		"strict": true,
+		"noImplicitAny": true,
+		"baseUrl": "./",
+		"paths": {
+			"@config/*": [
+				"src/config/*"
+			],
+			"@modules/*": [
+				"src/modules/*"
+			],
+			"@shared/*": [
+				"src/shared/*"
+			],
+			"@interfaces/*": [
+				"src/interfaces/*"
+			]
+		},
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}

@@ -12,20 +12,36 @@
 	],
 	"description": "All code in this project as created following the \"API Restful Javascript com Node.js, Typescript, TypeORM etc \" course in Udemy.",
 	"version": "1.0.0",
-	"main": "src/index.ts",
+	"main": "src/shared/http/server.ts",
 	"repository": "https://github.com/TutoDS/api-ts-typeorm",
 	"author": "Daniel Sousa @TutoDS <jdaniel.asousa@gmail.com>",
 	"license": "MIT",
 	"scripts": {
+		"dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
+		"lint": "eslint . --ext .ts",
+		"lint:fix": "eslint . --ext .ts --fix",
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"express": "^4.17.1"
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-async-errors": "^3.1.1"
 	},
 	"devDependencies": {
+		"@types/cors": "^2.8.10",
+		"@types/express": "^4.17.11",
+		"@types/node": "^14.14.31",
+		"@typescript-eslint/eslint-plugin": "^4.16.1",
+		"@typescript-eslint/parser": "^4.16.1",
+		"eslint": "^7.21.0",
+		"eslint-config-prettier": "^8.1.0",
+		"eslint-plugin-prettier": "^3.3.1",
 		"husky": "^5.1.3",
 		"lint-staged": "^10.5.4",
-		"prettier": "^2.2.1"
+		"prettier": "^2.2.1",
+		"ts-node-dev": "^1.1.6",
+		"typescript": "^4.2.2"
 	},
 	"lint-staged": {
 		"*.{js,ts,json,scss,css,html,tsx,jsx}": [
