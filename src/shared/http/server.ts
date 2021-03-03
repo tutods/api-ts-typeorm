@@ -1,7 +1,9 @@
 import { serverEnv } from '@config/environment';
 import { errorHandler } from '@shared/middlewares/ErrorHandler';
+import '@shared/typeorm';
 import cors from 'cors';
 import express from 'express';
+import 'reflect-metadata/';
 import { routes } from './routes';
 
 const { port } = serverEnv;

@@ -20,16 +20,21 @@
 		"dev": "tsnd --inspect --transpile-only --ignore-watch node_modules -r tsconfig-paths/register src/shared/http/server.ts",
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "eslint . --ext .ts --fix",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"typeorm": "tsnd ./node_modules/typeorm/cli.js"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
-		"express-async-errors": "^3.1.1"
+		"express-async-errors": "^3.1.1",
+		"pg": "^8.5.1",
+		"reflect-metadata": "^0.1.13",
+		"typeorm": "^0.2.31"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.10",
+		"@types/dotenv": "^8.2.0",
 		"@types/express": "^4.17.11",
 		"@types/node": "^14.14.31",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
@@ -48,6 +53,9 @@
 		"*.{js,ts,json,scss,css,html,tsx,jsx}": [
 			"prettier --write .",
 			"git add ."
+		],
+		"*{js,ts}": [
+			"eslint . --ext .ts"
 		]
 	},
 	"husky": {
