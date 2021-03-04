@@ -1,6 +1,7 @@
 import { serverEnv } from '@config/environment';
 import { errorHandler } from '@shared/middlewares/ErrorHandler';
 import '@shared/typeorm';
+import { errors } from 'celebrate';
 import cors from 'cors';
 import express from 'express';
 import 'express-async-errors';
@@ -14,6 +15,7 @@ const app = express();
 app.use(cors())
 	.use(express.json())
 	.use('/api', routes)
+	.use(errors())
 	.use(errorHandler)
 	.listen(port, () => {
 		console.log(`Server running on port ${port} 😎`);

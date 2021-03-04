@@ -1,19 +1,21 @@
 import { ConnectionOptions, createConnection } from 'typeorm';
+import { databaseEnv } from './../../config/environment';
+
+const { host, port, user, database } = databaseEnv;
 
 const connectionOptions: ConnectionOptions = {
 	name: 'default',
 	type: 'postgres',
-	host: 'localhost',
-	port: 5432,
-	username: 'postgres',
-	password: 'tutods2014',
-	database: 'api',
+	host: host,
+	port: port,
+	username: user.username,
+	password: user.password,
+	database: database,
 	synchronize: true,
 	entities: ['src/modules/**/typeorm/entities/*.ts'],
 	migrations: ['src/shared/typeorm/migrations/*.ts'],
 	cli: {
-		entitiesDir: 'src/modules/**/typeorm/entities',
-		migrationsDir: 'src/shared/typeorm/migrations/*.ts'
+		migrationsDir: 'src/shared/typeorm/migrations'
 	}
 };
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { AppError } from '@shared/errors/AppError';
 import { NextFunction, Request, Response } from 'express';
 
