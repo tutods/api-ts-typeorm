@@ -1,7 +1,7 @@
 import { IProductList } from '@interfaces/IProduct';
-import { BaseProductRepository } from './BaseProductRepository';
+import { BaseProductService } from './BaseProductService';
 
-class ListProductService extends BaseProductRepository {
+class ListProductService extends BaseProductService {
 	public async execute(): Promise<IProductList> {
 		const products = await this.repository.find();
 

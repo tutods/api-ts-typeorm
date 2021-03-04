@@ -6,7 +6,7 @@ import cors from 'cors';
 import express from 'express';
 import 'express-async-errors';
 import 'reflect-metadata';
-import { routes } from './routes';
+import { apiRoutes } from 'src/routes';
 
 const { port } = serverEnv;
 
@@ -14,7 +14,7 @@ const app = express();
 
 app.use(cors())
 	.use(express.json())
-	.use('/api', routes)
+	.use('/api', apiRoutes)
 	.use(errors())
 	.use(errorHandler)
 	.listen(port, () => {

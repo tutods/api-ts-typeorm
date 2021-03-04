@@ -1,6 +1,6 @@
 import { IProductChanged } from '@interfaces/IProduct';
 import { AppError } from '@shared/errors/AppError';
-import { BaseProductRepository } from './BaseProductRepository';
+import { BaseProductService } from './BaseProductService';
 
 interface IRequest {
 	name: string;
@@ -8,7 +8,7 @@ interface IRequest {
 	quantity: number;
 }
 
-class CreateProductService extends BaseProductRepository {
+class CreateProductService extends BaseProductService {
 	public async execute({
 		name,
 		price,
@@ -17,7 +17,7 @@ class CreateProductService extends BaseProductRepository {
 		const productExists = await this.repository.fidByName(name);
 
 		if (productExists) {
-			throw new AppError(`Already exists on product with name ${name}!`);
+			throw new AppError(`Already exists one product with name ${name}!`);
 		}
 
 		const product = this.repository.create({

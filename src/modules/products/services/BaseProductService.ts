@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm';
 import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 
-class BaseProductRepository {
+class BaseProductService {
 	protected repository = getCustomRepository(ProductRepository);
 }
 
-export { BaseProductRepository };
+export { BaseProductService };

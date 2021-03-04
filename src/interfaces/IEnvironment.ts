@@ -11,3 +11,8 @@ export interface IDatabaseEnv {
 	};
 	database: string;
 }
+
+export interface IAuthEnv {
+	salt: number;
+	secret: string;
+}
