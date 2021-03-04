@@ -1,6 +1,6 @@
 import { IProductChanged } from '@interfaces/IProduct';
 import { AppError } from '@shared/errors/AppError';
-import { BaseProductService } from './BaseProductService';
+import { BaseProductRepository } from './BaseProductRepository';
 
 interface IRequest {
 	id: string;
@@ -9,7 +9,7 @@ interface IRequest {
 	quantity: number;
 }
 
-class UpdateProductService extends BaseProductService {
+class UpdateProductService extends BaseProductRepository {
 	public async execute({
 		id,
 		name,
