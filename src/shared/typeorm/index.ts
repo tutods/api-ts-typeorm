@@ -1,7 +1,6 @@
 import { createConnection } from 'typeorm';
+import { databaseConfig } from './../../config/database';
 
-// const connectionOptions: ConnectionOptions = {
-
-// };
-
-createConnection();
+createConnection(databaseConfig).then(() => {
+	console.log('Database connected with success!');
+});
