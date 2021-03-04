@@ -18,5 +18,5 @@ app.use(cors())
 	.use(errors())
 	.use(errorHandler)
 	.listen(port, () => {
-		console.log(`Server running on port ${port} 😎`);
+		console.log(`🔼 Server running on port ${port}`);
 	});
