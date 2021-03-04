@@ -8,15 +8,16 @@ const errorHandler = (
 	response: Response,
 	next: NextFunction
 ) => {
-	const { code, message } = error;
-
-	if (!error) {
-		next();
+	if (error instanceof AppError) {
+		return response.status(error.code).json({
+			status: error.code,
+			message: error.message
+		});
 	}
 
-	response.status(code || 400).json({
-		code,
-		message
+	return response.status(500).json({
+		status: 500,
+		message: 'Internal server error'
 	});
 };
 

@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { CreateProductService } from '../services/CreateProductService';
 import { DeleteProductService } from '../services/DeleteProductService';
 import { ListProductService } from '../services/ListProductService';
@@ -6,112 +6,60 @@ import { ShowProductService } from '../services/ShowProductService';
 import { UpdateProductService } from '../services/UpdateProductService';
 
 class ProductController {
-	public async index(
-		req: Request,
-		res: Response,
-		next: NextFunction
-	): Promise<Response | undefined> {
+	public async index(req: Request, res: Response): Promise<Response> {
 		const listProducts = new ListProductService();
 
-		try {
-			const result = await listProducts.execute();
+		const result = await listProducts.execute();
 
-			return res.status(result.code).json(result);
-		} catch (err) {
-			next({
-				code: err.code,
-				message: err.message
-			});
-		}
+		return res.status(result.code).json(result);
 	}
 
-	public async show(
-		req: Request,
-		res: Response,
-		next: NextFunction
-	): Promise<Response | undefined> {
+	public async show(req: Request, res: Response): Promise<Response> {
 		const showProduct = new ShowProductService();
 		const { id } = req.params;
 
-		try {
-			const result = await showProduct.execute({ id });
+		const result = await showProduct.execute({ id });
 
-			return res.status(result.code).json(result);
-		} catch (err) {
-			next({
-				code: err.code,
-				message: err.message
-			});
-		}
+		return res.status(result.code).json(result);
 	}
 
-	public async create(
-		req: Request,
-		res: Response,
-		next: NextFunction
-	): Promise<Response | undefined> {
+	public async create(req: Request, res: Response): Promise<Response> {
 		const createProduct = new CreateProductService();
 		const { name, price, quantity } = req.body;
 
-		try {
-			const result = await createProduct.execute({
-				name,
-				price,
-				quantity
-			});
+		const result = await createProduct.execute({
+			name,
+			price,
+			quantity
+		});
 
-			return res.status(result.code).json(result);
-		} catch (error) {
-			next({
-				message: error.message,
-				code: error.code
-			});
-		}
+		return res.status(result.code).json(result);
 	}
 
-	public async update(
-		req: Request,
-		res: Response,
-		next: NextFunction
-	): Promise<Response | undefined> {
+	public async update(req: Request, res: Response): Promise<Response> {
 		const updateProduct = new UpdateProductService();
 		const { name, price, quantity } = req.body;
 		const { id } = req.params;
 
-		try {
-			const result = await updateProduct.execute({
-				id,
-				name,
-				price,
-				quantity
-			});
+		const result = await updateProduct.execute({
+			id,
+			name,
+			price,
+			quantity
+		});
 
-			return res.status(result.code).json(result);
-		} catch (err) {
-			next({
-				message: err.message,
-				code: err.code
-			});
-		}
+		return res.status(result.code).json(result);
 	}
 
-	public async delete(
-		req: Request,
-		res: Response,
-		next: NextFunction
-	): Promise<Response | undefined> {
+	public async delete(req: Request, res: Response): Promise<Response> {
 		const deleteProduct = new DeleteProductService();
 		const { id } = req.params;
 
-		try {
-			const result = await deleteProduct.execute({
-				id
-			});
+		const result = await deleteProduct.execute({
+			id
+		});
 
-			return res.status(result.code).json(result);
-		} catch (err) {
-			next({ message: err.message, code: err.code });
-		}
+		return res.status(result.code).json(result);
 	}
 }
 
