@@ -1,3 +1,4 @@
+import { isAuthenticated } from '@shared/middlewares/isAuthenticated';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { Router } from 'express';
 import { UserController } from '../controllers/UserController';
@@ -6,7 +7,7 @@ const controller = new UserController();
 const userRoutes = Router();
 
 userRoutes
-	.get('/', controller.index)
+	.get('/', isAuthenticated, controller.index)
 	.get(
 		'/:id',
 		celebrate({

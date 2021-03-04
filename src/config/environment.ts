@@ -11,7 +11,8 @@ const {
 	DB_USER_PWD,
 	DB,
 	SALT,
-	SECRET
+	SECRET,
+	EXPIRES
 } = process.env;
 
 export const serverEnv: IServerEnv = {
@@ -30,5 +31,6 @@ export const databaseEnv: IDatabaseEnv = {
 
 export const authEnv: IAuthEnv = {
 	salt: Number(SALT) || 10,
-	secret: SECRET || ''
+	secret: SECRET || '',
+	expires: EXPIRES || '1h'
 };

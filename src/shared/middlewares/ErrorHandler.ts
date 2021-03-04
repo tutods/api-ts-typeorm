@@ -2,7 +2,7 @@ import { AppError } from '@shared/errors/AppError';
 import { NextFunction, Request, Response } from 'express';
 
 const errorHandler = (
-	error: AppError,
+	error: AppError | Error,
 	request: Request,
 	response: Response,
 	next: NextFunction
@@ -16,7 +16,7 @@ const errorHandler = (
 
 	return response.status(500).json({
 		status: 500,
-		message: 'Internal server error'
+		message: error.message
 	});
 };
 

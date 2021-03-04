@@ -15,8 +15,8 @@ const app = express();
 app.use(cors())
 	.use(express.json())
 	.use('/api', apiRoutes)
-	.use(errors())
 	.use(errorHandler)
+	.use(errors())
 	.listen(port, () => {
 		console.log(`🔼 Server running on port ${port}`);
 	});

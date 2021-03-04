@@ -1,4 +1,6 @@
 import { productRoutes } from '@modules/products/routes/products.routes';
+import { sessionRoutes } from '@modules/users/routes/session.routes';
+import { userRoutes } from '@modules/users/routes/users.routes';
 import { Request, Response, Router } from 'express';
 
 const routes = Router();
@@ -9,6 +11,8 @@ routes
 			status: 'API is running 👌'
 		});
 	})
+	.use('/', sessionRoutes)
+	.use('/users', userRoutes)
 	.use('/products', productRoutes);
 
 export { routes };

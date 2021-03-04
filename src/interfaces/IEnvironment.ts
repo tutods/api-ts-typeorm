@@ -15,4 +15,5 @@ export interface IDatabaseEnv {
 export interface IAuthEnv {
 	salt: number;
 	secret: string;
+	expires: string;
 }
