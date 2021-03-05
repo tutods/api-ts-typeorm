@@ -1,4 +1,5 @@
 import { productRoutes } from '@modules/products/routes/products.routes';
+import { passwordRoutes } from '@modules/users/routes/password.routes';
 import { sessionRoutes } from '@modules/users/routes/session.routes';
 import { userRoutes } from '@modules/users/routes/users.routes';
 import { Request, Response, Router } from 'express';
@@ -12,6 +13,7 @@ apiRoutes
 		});
 	})
 	.use('/', sessionRoutes)
+	.use('/', passwordRoutes)
 	.use('/users', userRoutes)
 	.use('/products', productRoutes);
 

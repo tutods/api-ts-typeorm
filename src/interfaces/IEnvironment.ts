@@ -16,4 +16,8 @@ export interface IAuthEnv {
 	salt: number;
 	secret: string;
 	expires: string;
+	emailToken: {
+		expires: number;
+		time: string;
+	};
 }

@@ -1,7 +1,7 @@
+import { authEnv } from '@config/environment';
 import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
-import { authEnv } from './../../../config/environment';
 import { BaseUserService } from './BaseUserService';
 
 interface IRequest {
