@@ -1,6 +1,0 @@
-{
-	"cli": {
-		"entitiesDir": "src/modules/**/typeorm/entities",
-		"migrationsDir": "./src/shared/typeorm/migrations"
-	}
-}
