@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { EValidationMessages } from 'src/enums/EValidationMessages';
 
-const createUserSchema = {
+const genericUserBody = Joi.object({
 	name: Joi.string()
 		.required()
 		.messages({
@@ -22,6 +22,17 @@ const createUserSchema = {
 			'string.base': `Password ${EValidationMessages.STRING}`,
 			'any.required': `Password ${EValidationMessages.REQUIRED}`
 		})
-};
+});
 
-export { createUserSchema };
+const userIdParams = Joi.object({
+	id: Joi.string()
+		.guid()
+		.required()
+		.messages({
+			'string.base': `Id ${EValidationMessages.STRING}`,
+			'string.guid': `Id ${EValidationMessages.UUID}`,
+			'any.required': `Id ${EValidationMessages.REQUIRED}`
+		})
+});
+
+export { genericUserBody, userIdParams };

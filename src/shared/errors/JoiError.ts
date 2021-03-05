@@ -1,42 +1,38 @@
-interface IErrors {
-	message: string;
-	type: string;
-	context: {
-		label: string;
-		key: string;
-	};
-}
+import { IJoiErrors } from '@interfaces/IJoi';
 
-interface IJoiErrors {
+interface IJoiResultErrors {
 	field: string;
 	message: string;
 }
 
 class JoiError {
-	public errors: IJoiErrors[];
+	public errors: IJoiResultErrors[];
 	public readonly code: number;
 
-	constructor(errors: IErrors[], code = 400) {
+	constructor(errors: IJoiErrors[], code = 400) {
 		this.errors = this.format(errors);
 
 		this.code = code;
 	}
 
-	private format(errors: IErrors[]): IJoiErrors[] {
-		return errors.map((err) => {
-			const { message, context } = err;
+	private format(errors: IJoiErrors[]): IJoiResultErrors[] {
+		const formatErrors: IJoiResultErrors[] = errors.map((error) => {
+			const { message, context } = error;
+
+			const field =
+				context.label.charAt(0).toUpperCase() +
+					context.label.slice(1).toLowerCase() || '';
 
 			return {
-				field: `${
-					context.label.charAt(0).toUpperCase() +
-					context.label.slice(1).toLowerCase()
-				}`,
+				field: field,
 				message: `${
 					message.charAt(0).toUpperCase() +
 					message.slice(1).toLowerCase()
 				}`
 			};
 		});
+
+		return formatErrors;
 	}
 }
 

@@ -1,13 +1,9 @@
-import { joiOptions } from '@config/joiOptions';
-import { JoiError } from '@shared/errors/JoiError';
 import { Request, Response } from 'express';
-import Joi from 'joi';
 import { CreateUserService } from '../services/CreateUserService';
 import { DeleteUserService } from '../services/DeleteUserService';
 import { ListUserService } from '../services/ListUserService';
 import { ShowUserService } from '../services/ShowUserService';
 import { UpdateUserService } from '../services/UpdateUserService';
-import { createUserSchema } from '../validations/UserSchemas';
 
 class UserController {
 	public async index(req: Request, res: Response): Promise<Response> {
@@ -28,15 +24,6 @@ class UserController {
 	}
 
 	public async create(req: Request, res: Response): Promise<Response> {
-		const { error } = Joi.object(createUserSchema).validate(
-			req.body,
-			joiOptions
-		);
-
-		if (error) {
-			throw new JoiError(error.details, 400);
-		}
-
 		const createUser = new CreateUserService();
 		const { name, email, password } = req.body;
 

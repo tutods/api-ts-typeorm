@@ -1,8 +1,9 @@
 import { AppError } from '@shared/errors/AppError';
+import { JoiError } from '@shared/errors/JoiError';
 import { NextFunction, Request, Response } from 'express';
 
 const errorHandler = (
-	error: AppError | Error,
+	error: JoiError | AppError | Error,
 	request: Request,
 	response: Response,
 	next: NextFunction
@@ -14,9 +15,17 @@ const errorHandler = (
 		});
 	}
 
+	if (error instanceof JoiError) {
+		return response.status(error.code).json({
+			status: error.code,
+			errors: error.errors
+		});
+	}
+
+	// In last case return internal server error
 	return response.status(500).json({
 		status: 500,
-		message: error.message
+		message: 'Internal server error'
 	});
 };
 

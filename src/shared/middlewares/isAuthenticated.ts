@@ -43,7 +43,7 @@ export const isAuthenticated = (
 			update_at
 		};
 
-		return next();
+		next();
 	} catch (error) {
 		throw new AppError('You token is not valid.', 401);
 	}
