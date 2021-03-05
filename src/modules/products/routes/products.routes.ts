@@ -18,10 +18,8 @@ productRoutes
 	.post('/', joiBodyValidation(productGenericBody), controller.create)
 	.put(
 		'/:id',
-		[
-			joiParamsValidation(productIdParam),
-			joiBodyValidation(productGenericBody)
-		],
+		joiParamsValidation(productIdParam),
+		joiBodyValidation(productGenericBody),
 		controller.update
 	)
 	.delete('/:id', joiParamsValidation(productIdParam), controller.delete);

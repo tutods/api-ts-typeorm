@@ -3,9 +3,9 @@ import { sessionRoutes } from '@modules/users/routes/session.routes';
 import { userRoutes } from '@modules/users/routes/users.routes';
 import { Request, Response, Router } from 'express';
 
-const routes = Router();
+const apiRoutes = Router();
 
-routes
+apiRoutes
 	.get('/', (req: Request, res: Response) => {
 		return res.status(200).json({
 			status: 'API is running 👌'
@@ -15,4 +15,4 @@ routes
 	.use('/users', userRoutes)
 	.use('/products', productRoutes);
 
-export { routes };
+export { apiRoutes };

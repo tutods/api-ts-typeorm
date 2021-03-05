@@ -6,7 +6,7 @@ import cors from 'cors';
 import express from 'express';
 import 'express-async-errors';
 import 'reflect-metadata';
-import { apiRoutes } from 'src/routes';
+import { apiRoutes } from './routes';
 
 const { port } = serverEnv;
 

@@ -45,7 +45,6 @@ export const isAuthenticated = (
 
 		next();
 	} catch (error) {
-		console.log('AQQQ');
 		throw new AppError('Your token is invalid.', 401);
 	}
 };

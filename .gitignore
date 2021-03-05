@@ -433,3 +433,5 @@ $RECYCLE.BIN/
 
 uploads/*
 !uploads/.gitkeep
+
+ormconfig.json

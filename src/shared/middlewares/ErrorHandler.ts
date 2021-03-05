@@ -1,6 +1,7 @@
 import { AppError } from '@shared/errors/AppError';
 import { JoiError } from '@shared/errors/JoiError';
 import { NextFunction, Request, Response } from 'express';
+import { MulterError } from 'multer';
 
 const errorHandler = (
 	error: JoiError | AppError | Error,
@@ -11,6 +12,14 @@ const errorHandler = (
 	if (error instanceof AppError) {
 		return response.status(error.code).json({
 			status: error.code,
+			message: error.message
+		});
+	}
+
+	if (error instanceof MulterError) {
+		return response.status(400).send({
+			code: 400,
+			type: 'Upload Error',
 			message: error.message
 		});
 	}
