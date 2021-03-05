@@ -1,4 +1,4 @@
-import { joiOptions } from '@config/joiOptions';
+import { joiOptions } from '@config/joi';
 import { IJoiErrors } from '@interfaces/IJoi';
 import { JoiError } from '@shared/errors/JoiError';
 import { NextFunction, Request, Response } from 'express';
@@ -31,6 +31,18 @@ export const joiParamsValidation = (schema: Schema) => {
 export const joiQueryValidation = (schema: Schema) => {
 	return (request: Request, response: Response, next: NextFunction): void => {
 		const { error } = schema.validate(request.query, joiOptions);
+
+		if (error) {
+			throw new JoiError(error.details as IJoiErrors[], 400);
+		}
+
+		next();
+	};
+};
+
+export const joiFileValidation = (schema: Schema) => {
+	return (request: Request, response: Response, next: NextFunction): void => {
+		const { error } = schema.validate(request.file, joiOptions);
 
 		if (error) {
 			throw new JoiError(error.details as IJoiErrors[], 400);

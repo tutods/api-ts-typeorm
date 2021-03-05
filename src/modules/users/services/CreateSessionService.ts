@@ -24,7 +24,7 @@ class CreateSessionService extends BaseUserService {
 			throw new AppError('Email or password incorrect!', 401);
 		}
 
-		const { id, password: omitted, ...otherInfo } = user;
+		const { id, password: userPassword, ...otherInfo } = user;
 
 		const token = sign(otherInfo, authEnv.secret, {
 			subject: user.id,

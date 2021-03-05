@@ -46,7 +46,7 @@
 		"@types/joi": "^17.2.3",
 		"@types/jsonwebtoken": "^8.5.0",
 		"@types/multer": "^1.4.5",
-		"@types/node": "^8.0.29",
+		"@types/node": "^14.14.31",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"@typescript-eslint/parser": "^4.16.1",
 		"eslint": "^7.21.0",

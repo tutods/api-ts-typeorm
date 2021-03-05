@@ -1,4 +1,5 @@
 import { serverEnv } from '@config/environment';
+import { uploadConfig } from '@config/upload';
 import { errorHandler } from '@shared/middlewares/ErrorHandler';
 import '@shared/typeorm';
 import cors from 'cors';
@@ -12,6 +13,7 @@ const { port } = serverEnv;
 const app = express();
 
 app.use(cors())
+	.use('/uploads', express.static(uploadConfig.directory))
 	.use(express.json())
 	.use('/api', apiRoutes)
 	.use(errorHandler)
