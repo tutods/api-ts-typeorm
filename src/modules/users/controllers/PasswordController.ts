@@ -16,15 +16,14 @@ class PasswordController {
 	}
 
 	public async reset(req: Request, res: Response, next: NextFunction) {
-		const { password, confirmPassword } = req.body;
+		const { password } = req.body;
 		const { token } = req.params;
 
 		const resetPasswordService = new ResetPasswordService();
 
 		const result = await resetPasswordService.execute({
 			token,
-			password,
-			confirmPassword
+			password
 		});
 
 		return res.status(result.code).json(result);

@@ -16,11 +16,7 @@ interface IRequest {
 class ResetPasswordService extends BaseUserService {
 	tokenRepository = getCustomRepository(UserTokenRepository);
 
-	public async execute({
-		token,
-		password,
-		confirmPassword
-	}: IRequest): Promise<IUserChanged> {
+	public async execute({ token, password }: IRequest): Promise<IUserChanged> {
 		const userToken = await this.tokenRepository.findByToken(token);
 
 		if (!userToken) {
@@ -59,13 +55,6 @@ class ResetPasswordService extends BaseUserService {
 		if (isAfter(Date.now(), compareDate)) {
 			throw new AppError(
 				`Your token already expired! Please make a new forgot password request.`,
-				400
-			);
-		}
-
-		if (confirmPassword !== password) {
-			throw new AppError(
-				`The confirm password and password not match`,
 				400
 			);
 		}
