@@ -9,5 +9,5 @@ export const getTypeOfTime = (time: string): string => {
 };
 
 export const getTime = (time: string): number => {
-	return Number(time.slice(time.length - 1));
+	return Number(time.slice(0, -1));
 };

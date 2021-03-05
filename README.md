@@ -49,3 +49,7 @@ To this project the database used is **PostgreSQL** in **Docker** container.
 -   **`yarn dev`** or **`npm run dev`:** run the _localhost_ server;
 -   **`yarn lint`** or **`npm run lint`:** to run the **ESLint** in your terminal;
 -   **`yarn lint:fix`** or **`npm run lint:fix`:** to run the **ESLint** and fix the issues.
+
+<h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
+
+-   **[Email Template](https://github.com/leemunroe/responsive-html-email-template)**

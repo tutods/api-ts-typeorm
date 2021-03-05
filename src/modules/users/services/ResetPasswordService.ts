@@ -50,8 +50,6 @@ class ResetPasswordService extends BaseUserService {
 			compareDate = addDays(tokenCreatedAt, expires);
 		}
 
-		console.log(compareDate);
-
 		if (isAfter(Date.now(), compareDate)) {
 			throw new AppError(
 				`Your token already expired! Please make a new forgot password request.`,

@@ -1,8 +1,10 @@
+import { EtherealMail } from '@config/mail/EtherealMail';
 import { AppError } from '@shared/errors/AppError';
+import path from 'path';
 import { getCustomRepository } from 'typeorm';
 import { UserTokenRepository } from '../typeorm/repositories/UserTokenRepository';
+import { authEnv } from './../../../config/environment';
 import { BaseUserService } from './BaseUserService';
-
 interface IRequest {
 	email: string;
 }
@@ -18,8 +20,29 @@ class SendForgotPasswordService extends BaseUserService {
 		}
 
 		const userToken = await this.tokenRepository.generateToken(user.id);
+		const emailTemplate = path.resolve(
+			__dirname,
+			'..',
+			'views',
+			'emails',
+			'forgot-password.hbs'
+		);
 
-		console.log(userToken);
+		if (userToken) {
+			await EtherealMail.sendMail({
+				from: { name: 'Daniel Sousa', email: 'geral@daniel-sousa.com' },
+				to: { name: user.name, email: user.email },
+				subject: 'Reset your password',
+				templateData: {
+					file: emailTemplate,
+					variables: {
+						name: user.name,
+						link: `http://localhost:3333/api/reset-password/${userToken.token}`,
+						time: `${authEnv.emailToken.expires} ${authEnv.emailToken.time}`
+					}
+				}
+			});
+		}
 	}
 }
 
