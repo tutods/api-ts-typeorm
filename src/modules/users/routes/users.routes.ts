@@ -5,20 +5,20 @@ import {
 } from '@shared/middlewares/joiValidation';
 import { Router } from 'express';
 import { UserController } from '../controllers/UserController';
-import { genericUserBody, userIdParams } from '../validations/UserSchemas';
+import { userGenericBody, userIdParam } from '../validations/UserSchemas';
 
 const controller = new UserController();
 const userRoutes = Router();
 
 userRoutes
 	.get('/', isAuthenticated, controller.index)
-	.get('/:id', joiParamsValidation(userIdParams), controller.show)
-	.post('/', joiBodyValidation(genericUserBody), controller.create)
+	.get('/:id', joiParamsValidation(userIdParam), controller.show)
+	.post('/', joiBodyValidation(userGenericBody), controller.create)
 	.put(
 		'/:id',
-		[joiParamsValidation(userIdParams), joiBodyValidation(genericUserBody)],
+		[joiParamsValidation(userIdParam), joiBodyValidation(userGenericBody)],
 		controller.update
 	)
-	.delete('/:id', controller.delete);
+	.delete('/:id', joiParamsValidation(userIdParam), controller.delete);
 
 export { userRoutes };

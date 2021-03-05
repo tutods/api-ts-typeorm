@@ -1,30 +1,31 @@
 import Joi from 'joi';
 import { EValidationMessages } from 'src/enums/EValidationMessages';
 
-const userGenericBody = Joi.object({
+const productGenericBody = Joi.object({
 	name: Joi.string()
 		.required()
 		.messages({
 			'string.base': `Password ${EValidationMessages.STRING}`,
 			'any.required': `Password ${EValidationMessages.REQUIRED}`
 		}),
-	email: Joi.string()
-		.email()
+
+	price: Joi.number()
+		.precision(2)
 		.required()
 		.messages({
-			'string.base': `Email ${EValidationMessages.STRING}`,
-			'string.email': EValidationMessages.EMAIL,
-			'any.required': `Email ${EValidationMessages.REQUIRED}`
+			'number.base': `Price ${EValidationMessages.NUMBER}`,
+			'number.precision': `Price ${EValidationMessages.PRECISION}`,
+			'any.required': `Price ${EValidationMessages.REQUIRED}`
 		}),
-	password: Joi.string()
+	quantity: Joi.number()
 		.required()
 		.messages({
-			'string.base': `Password ${EValidationMessages.STRING}`,
-			'any.required': `Password ${EValidationMessages.REQUIRED}`
+			'number.base': `Quantity ${EValidationMessages.NUMBER}`,
+			'any.required': `Quantity ${EValidationMessages.REQUIRED}`
 		})
 });
 
-const userIdParam = Joi.object({
+const productIdParam = Joi.object({
 	id: Joi.string()
 		.guid()
 		.required()
@@ -35,4 +36,4 @@ const userIdParam = Joi.object({
 		})
 });
 
-export { userGenericBody, userIdParam };
+export { productGenericBody, productIdParam };
