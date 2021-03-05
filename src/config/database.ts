@@ -12,5 +12,9 @@ export const databaseConfig: ConnectionOptions = {
 	database: database,
 	synchronize: true,
 	entities: ['src/modules/**/typeorm/entities/*.ts'],
-	migrations: ['src/shared/typeorm/migrations/*.ts']
+	migrations: ['src/shared/typeorm/migrations/*.ts'],
+	cli: {
+		entitiesDir: 'src/modules/**/typeorm/entities',
+		migrationsDir: './src/shared/typeorm/migrations'
+	}
 };

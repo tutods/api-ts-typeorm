@@ -1,5 +1,5 @@
+import { databaseConfig } from '@config/database';
 import { createConnection } from 'typeorm';
-import { databaseConfig } from './../../config/database';
 
 createConnection(databaseConfig)
 	.then(() => {
