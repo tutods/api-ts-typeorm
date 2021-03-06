@@ -9,7 +9,11 @@ import multer from 'multer';
 import { checkIsImage } from 'src/functions/checkIsImage';
 import { userAvatarController } from '../controllers/UserAvatarController';
 import { UserController } from '../controllers/UserController';
-import { userGenericBody, userIdParam } from '../validations/UserSchemas';
+import {
+	userGenericBody,
+	userIdParam,
+	userUpdateBody
+} from '../validations/UserSchemas';
 
 const controller = new UserController();
 const avatarController = new userAvatarController();
@@ -33,7 +37,7 @@ userRoutes
 	.put(
 		'/:id',
 		joiParamsValidation(userIdParam),
-		joiBodyValidation(userGenericBody),
+		joiBodyValidation(userUpdateBody),
 		controller.update
 	)
 	.delete('/:id', joiParamsValidation(userIdParam), controller.delete)

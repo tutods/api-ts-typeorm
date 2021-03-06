@@ -5,8 +5,8 @@ const userGenericBody = Joi.object({
 	name: Joi.string()
 		.required()
 		.messages({
-			'string.base': `Password ${EValidationMessages.STRING}`,
-			'any.required': `Password ${EValidationMessages.REQUIRED}`
+			'string.base': `Name ${EValidationMessages.STRING}`,
+			'any.required': `Name ${EValidationMessages.REQUIRED}`
 		}),
 	email: Joi.string()
 		.email()
@@ -24,6 +24,26 @@ const userGenericBody = Joi.object({
 		})
 });
 
+const userUpdateBody = Joi.object({
+	name: Joi.string()
+		.optional()
+		.messages({
+			'string.base': `Name ${EValidationMessages.STRING}`
+		}),
+	email: Joi.string()
+		.email()
+		.optional()
+		.messages({
+			'string.base': `Email ${EValidationMessages.STRING}`,
+			'string.email': EValidationMessages.EMAIL
+		}),
+	password: Joi.string()
+		.optional()
+		.messages({
+			'string.base': `Password ${EValidationMessages.STRING}`
+		})
+});
+
 const userIdParam = Joi.object({
 	id: Joi.string()
 		.guid()
@@ -35,4 +55,4 @@ const userIdParam = Joi.object({
 		})
 });
 
-export { userGenericBody, userIdParam };
+export { userGenericBody, userUpdateBody, userIdParam };
