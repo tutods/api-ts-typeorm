@@ -24,7 +24,6 @@ class SendForgotPasswordService extends BaseUserService {
 			__dirname,
 			'..',
 			'views',
-			'emails',
 			'forgot-password.hbs'
 		);
 
