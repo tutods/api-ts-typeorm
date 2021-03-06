@@ -33,7 +33,7 @@ class UpdateProfileService extends BaseUserService {
 		}
 
 		if (password && !oldPassword) {
-			throw new AppError('Old password is required!', 400);
+			throw new AppError('Old password is required!', 403);
 		}
 
 		if (password && oldPassword) {
@@ -43,7 +43,7 @@ class UpdateProfileService extends BaseUserService {
 			);
 
 			if (!compareOldPassword) {
-				throw new AppError('Old password does not match!', 400);
+				throw new AppError('Old password does not match!', 403);
 			}
 
 			user.password = await hash(password, authEnv.salt);
