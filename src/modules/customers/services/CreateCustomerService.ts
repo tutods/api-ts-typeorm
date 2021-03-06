@@ -1,4 +1,4 @@
-import { ICustomerChanged } from '@interfaces/ICustomter';
+import { ICustomerChanged } from '@interfaces/ICustomer';
 import { AppError } from '@shared/errors/AppError';
 import { BaseCustomerService } from './BaseCustomerService';
 

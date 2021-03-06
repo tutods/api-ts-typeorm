@@ -1,4 +1,4 @@
-import { ICustomerList } from '@interfaces/ICustomter';
+import { ICustomerList } from '@interfaces/ICustomer';
 import { BaseCustomerService } from './BaseCustomerService';
 
 class ListCustomerService extends BaseCustomerService {
