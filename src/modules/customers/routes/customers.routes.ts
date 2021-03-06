@@ -9,11 +9,13 @@ import {
 	customerIdParam,
 	customerUpdateBody
 } from '../validations/CustomersSchema';
+import { isAuthenticated } from './../../../shared/middlewares/isAuthenticated';
 
 const controller = new CustomerController();
 const customerRoutes = Router();
 
 customerRoutes
+	.use(isAuthenticated)
 	.get('/', controller.index)
 	.get('/:id', joiParamsValidation(customerIdParam), controller.show)
 	.post('/', joiBodyValidation(customerGenericBody), controller.create)
