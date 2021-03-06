@@ -3,12 +3,12 @@ import { AppError } from '@shared/errors/AppError';
 import { BaseUserService } from './BaseUserService';
 
 interface IRequest {
-	user_id: string;
+	userId: string;
 }
 
 class ShowProfileService extends BaseUserService {
-	public async execute({ user_id }: IRequest): Promise<IUserShow> {
-		const user = await this.repository.findById(user_id);
+	public async execute({ userId }: IRequest): Promise<IUserShow> {
+		const user = await this.repository.findById(userId);
 
 		if (!user) {
 			throw new AppError('User not found!', 404);

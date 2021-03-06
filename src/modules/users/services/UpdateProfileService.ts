@@ -5,22 +5,22 @@ import { authEnv } from './../../../config/environment';
 import { BaseUserService } from './BaseUserService';
 
 interface IRequest {
-	user_id: string;
+	userId: string;
 	name: string;
 	email: string;
-	password: string;
-	oldPassword: string;
+	password?: string;
+	oldPassword?: string;
 }
 
 class UpdateProfileService extends BaseUserService {
 	public async execute({
-		user_id,
+		userId,
 		name,
 		email,
 		password,
 		oldPassword
 	}: IRequest): Promise<IUserChanged> {
-		const user = await this.repository.findById(user_id);
+		const user = await this.repository.findById(userId);
 
 		if (!user) {
 			throw new AppError('User not foud!', 404);
@@ -28,24 +28,29 @@ class UpdateProfileService extends BaseUserService {
 
 		const userUpdateEmail = await this.repository.findByEmail(email);
 
-		if (userUpdateEmail && userUpdateEmail.id !== user_id) {
+		if (userUpdateEmail && userUpdateEmail.id !== userId) {
 			throw new AppError('Already exists one user with this email.', 403);
 		}
 
 		if (password && !oldPassword) {
 			throw new AppError('Old password is required!', 400);
-		} else {
-			console.log('ENTROU');
-			const compareOldPassword = await compare(password, user.password);
+		}
+
+		if (password && oldPassword) {
+			const compareOldPassword = await compare(
+				oldPassword,
+				user.password
+			);
 
 			if (!compareOldPassword) {
 				throw new AppError('Old password does not match!', 400);
 			}
+
+			user.password = await hash(password, authEnv.salt);
 		}
 
 		user.name = name;
 		user.email = email;
-		user.password = await hash(password, authEnv.salt);
 
 		await this.repository.save(user);
 

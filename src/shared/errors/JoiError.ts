@@ -19,12 +19,8 @@ class JoiError {
 		const formatErrors: IJoiResultErrors[] = errors.map((error) => {
 			const { message, context } = error;
 
-			const field =
-				context.label.charAt(0).toUpperCase() +
-					context.label.slice(1).toLowerCase() || '';
-
 			return {
-				field: field,
+				field: context.label,
 				message: `${
 					message.charAt(0).toUpperCase() +
 					message.slice(1).toLowerCase()
