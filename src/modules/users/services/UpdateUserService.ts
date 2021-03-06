@@ -22,6 +22,15 @@ class UpdateUserService extends BaseUserService {
 			throw new AppError('User not found', 404);
 		}
 
+		const userExists = await this.repository.findByEmail(email);
+
+		if (userExists && email !== user.email) {
+			throw new AppError(
+				'There is already one user with this email.',
+				403
+			);
+		}
+
 		user.name = name;
 		user.email = email;
 		user.password = password;
