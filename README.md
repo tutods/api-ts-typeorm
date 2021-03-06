@@ -7,7 +7,7 @@
 <img alt="Udemy" src="https://img.shields.io/badge/Udemy%20-%23EA5252.svg?&style=for-the-badge&logo=Udemy&logoColor=white"/>
 </a>
 
-<h2 style="margin-top:20px;font-weight:300">📃 Technologies</h2>
+<h2 style="margin-top:40px;font-weight:300">📃 Technologies</h2>
 
 <a href="#">
 <img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
@@ -25,13 +25,13 @@
 <img alt="JWT" src="https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white"/>
 </a>
 
-<h2 style="margin-top:20px;font-weight:300">🧰 Tools</h2>
+<h2 style="margin-top:40px;font-weight:300">🧰 Tools</h2>
 
 <a href="#">
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VS Code" />
 </a>
 
-<h2 style="margin-top:20px;font-weight:300">📀 Database</h2>
+<h2 style="margin-top:40px;font-weight:300">📀 Database</h2>
 
 To this project the database used is **PostgreSQL** in **Docker** container.
 
@@ -43,7 +43,7 @@ To this project the database used is **PostgreSQL** in **Docker** container.
 <img alt="Docker" src="https://img.shields.io/badge/docker%20-%230db7ed.svg?&style=for-the-badge&logo=docker&logoColor=white"/>
 </a>
 
-<h2 style="margin-top:20px;font-weight:300">⌨️ Commands</h2>
+<h2 style="margin-top:40px;font-weight:300">⌨️ Commands</h2>
 
 -   **`yarn format`** or **`npm run format`:** run **Prettier** to format all code <small>(using settings defined in `.prettierrc` file)</small>;
 -   **`yarn dev`** or **`npm run dev`:** run the _localhost_ server;
@@ -51,7 +51,7 @@ To this project the database used is **PostgreSQL** in **Docker** container.
 -   **`yarn lint:fix`** or **`npm run lint:fix`:** to run the **ESLint** and fix the issues;
 -   **`yarn typeorm`** or **`npm run typeorm`:** to run the **TypeORM** to run or create migrations (for example).
 
-<h2 style="margin-top:20px;font-weight:300">📄 Changes</h2>
+<h2 style="margin-top:40px;font-weight:300">📄 Changes</h2>
 
 I have some changes in my project, like:
 
@@ -67,4 +67,4 @@ I have some changes in my project, like:
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 
--   **[Email Template](https://github.com/leemunroe/responsive-html-email-template)**
+-   **[Email Template](https://github.com/leemunroe/responsive-html-email-template)** <small>(I use to create the forgot password email)</small>;
