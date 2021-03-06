@@ -39,15 +39,3 @@ export const joiQueryValidation = (schema: Schema) => {
 		next();
 	};
 };
-
-export const joiFileValidation = (schema: Schema) => {
-	return (request: Request, response: Response, next: NextFunction): void => {
-		const { error } = schema.validate(request.file, joiOptions);
-
-		if (error) {
-			throw new JoiError(error.details as IJoiErrors[], 400);
-		}
-
-		next();
-	};
-};

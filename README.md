@@ -48,7 +48,22 @@ To this project the database used is **PostgreSQL** in **Docker** container.
 -   **`yarn format`** or **`npm run format`:** run **Prettier** to format all code <small>(using settings defined in `.prettierrc` file)</small>;
 -   **`yarn dev`** or **`npm run dev`:** run the _localhost_ server;
 -   **`yarn lint`** or **`npm run lint`:** to run the **ESLint** in your terminal;
--   **`yarn lint:fix`** or **`npm run lint:fix`:** to run the **ESLint** and fix the issues.
+-   **`yarn lint:fix`** or **`npm run lint:fix`:** to run the **ESLint** and fix the issues;
+-   **`yarn typeorm`** or **`npm run typeorm`:** to run the **TypeORM** to run or create migrations (for example).
+
+<h2 style="margin-top:20px;font-weight:300">📄 Changes</h2>
+
+I have some changes in my project, like:
+
+-   I use **Joi** to validation fields in requests (body, params or query), and create 3 middlewares:
+    -   to validate fields in body **(`req.body`)**;
+    -   to validate params **(`req.params`)**;
+    -   to validate query params **(`req.query`)**.
+-   Create most of the interfaces in `src/interfaces` folder, and start all files with `I` <small>(to represent the interface)</small>;
+-   Use `.env` file to storage environment variables;
+-   Create the `src/config/environment.ts` file to export objects with `.env` variables;
+-   Create class **`JoiError`** to format the errors from **Joi** validation;
+-   Create enum <small>(in `src/enums/` and starts with `E` to represent the enum)</small> to storage the most strings texts to **Joi** validations.
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 
