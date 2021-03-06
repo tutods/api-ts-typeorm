@@ -1,7 +1,9 @@
+import { OrderProduct } from '@modules/orders/typeorm/entities/OrderProduct';
 import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	OneToMany,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from 'typeorm';
@@ -19,6 +21,11 @@ class Product {
 
 	@Column('int')
 	quantity: number;
+
+	@OneToMany(() => OrderProduct, (orderProduct) => orderProduct.product, {
+		cascade: true
+	})
+	order_products: OrderProduct[];
 
 	@CreateDateColumn()
 	created_at: Date;
