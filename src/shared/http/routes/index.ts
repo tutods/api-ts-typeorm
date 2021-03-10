@@ -1,4 +1,5 @@
 import { customerRoutes } from '@modules/customers/routes/customers.routes';
+import { orderRoutes } from '@modules/orders/routes/orders.routes';
 import { productRoutes } from '@modules/products/routes/products.routes';
 import { passwordRoutes } from '@modules/users/routes/password.routes';
 import { profileRoutes } from '@modules/users/routes/profile.routes';
@@ -19,6 +20,7 @@ apiRoutes
 	.use('/users', userRoutes)
 	.use('/profile', profileRoutes)
 	.use('/products', productRoutes)
-	.use('/customers', customerRoutes);
+	.use('/customers', customerRoutes)
+	.use('/orders', orderRoutes);
 
 export { apiRoutes };
