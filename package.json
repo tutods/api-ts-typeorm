@@ -38,7 +38,8 @@
 		"nodemailer": "^6.5.0",
 		"pg": "^8.5.1",
 		"reflect-metadata": "^0.1.10",
-		"typeorm": "0.2.31"
+		"typeorm": "0.2.31",
+		"typeorm-pagination": "^2.0.1"
 	},
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.2",
