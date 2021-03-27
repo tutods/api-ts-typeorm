@@ -1,12 +1,18 @@
+import { isAuthenticated } from '@shared/middlewares/isAuthenticated';
+import {
+	joiBodyValidation,
+	joiParamsValidation
+} from '@shared/middlewares/joiValidation';
 import { Router } from 'express';
 import { OrderController } from '../controllers/OrderController';
-import { isAuthenticated } from './../../../shared/middlewares/isAuthenticated';
+import { orderGenericBody, orderIdParam } from '../validations/OrderSchema';
 
 const controller = new OrderController();
 const orderRoutes = Router();
 
 orderRoutes
-	.get('/:id', isAuthenticated, controller.show)
-	.post('/', isAuthenticated, controller.create);
+	.use(isAuthenticated)
+	.get('/:id', joiParamsValidation(orderIdParam), controller.show)
+	.post('/', joiBodyValidation(orderGenericBody), controller.create);
 
 export { orderRoutes };
