@@ -22,7 +22,7 @@ class PasswordController {
 		const resetPasswordService = new ResetPasswordService();
 
 		const result = await resetPasswordService.execute({
-			token,
+			token: token,
 			password
 		});
 

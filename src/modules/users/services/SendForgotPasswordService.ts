@@ -1,9 +1,9 @@
+import { authEnv, serverEnv } from '@config/environment';
 import { EtherealMail } from '@config/mail/EtherealMail';
 import { AppError } from '@shared/errors/AppError';
 import path from 'path';
 import { getCustomRepository } from 'typeorm';
 import { UserTokenRepository } from '../typeorm/repositories/UserTokenRepository';
-import { authEnv } from './../../../config/environment';
 import { BaseUserService } from './BaseUserService';
 interface IRequest {
 	email: string;
@@ -36,7 +36,7 @@ class SendForgotPasswordService extends BaseUserService {
 					file: emailTemplate,
 					variables: {
 						name: user.name,
-						link: `http://localhost:3333/api/reset-password/${userToken.token}`,
+						link: `http://localhost:${serverEnv.port}/api/reset-password/${userToken.token}`,
 						time: `${authEnv.emailToken.expires} ${authEnv.emailToken.time}`
 					}
 				}

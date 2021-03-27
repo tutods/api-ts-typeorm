@@ -10,7 +10,6 @@ import { BaseUserService } from './BaseUserService';
 interface IRequest {
 	token: string;
 	password: string;
-	confirmPassword: string;
 }
 
 class ResetPasswordService extends BaseUserService {

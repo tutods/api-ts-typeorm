@@ -22,7 +22,7 @@
 </a>
 
 <a href="#">
-<img alt="JWT" src="https://img.shields.io/badge/JSON%20Web%20Tokens-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white"/>
+<img alt="JWT" src="https://img.shields.io/badge/JSON%20Web%20Token-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white"/>
 </a>
 
 <h2 style="margin-top:40px;font-weight:300">🧰 Tools</h2>
@@ -63,7 +63,8 @@ I have some changes in my project, like:
 -   Use `.env` file to storage environment variables;
 -   Create the `src/config/environment.ts` file to export objects with `.env` variables;
 -   Create class **`JoiError`** to format the errors from **Joi** validation;
--   Create enum <small>(in `src/enums/` and starts with `E` to represent the enum)</small> to storage the most strings texts to **Joi** validations.
+-   Create enum <small>(in `src/enums/` and starts with `E` to represent the enum)</small> to storage the most strings texts to **Joi** validations;
+-   Create middlewares to **Joi Validation** (`shared/middlewares/joiValidation.ts`);
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 

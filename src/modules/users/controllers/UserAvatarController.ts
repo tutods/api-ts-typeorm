@@ -1,3 +1,4 @@
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { UpdateUserAvatarService } from '../services/UpdateUserAvatarService';
 
@@ -10,7 +11,7 @@ class userAvatarController {
 
 		const result = await updateService.execute({ avatar, id });
 
-		return res.status(result.code).json(result);
+		return res.status(result.code).json(classToClass(result));
 	}
 }
 
