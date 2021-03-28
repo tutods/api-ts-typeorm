@@ -1,5 +1,5 @@
+import { EValidationMessages } from '@enums/EValidationMessages';
 import Joi from 'joi';
-import { EValidationMessages } from 'src/enums/EValidationMessages';
 
 const profileUpdateBody = Joi.object({
 	name: Joi.string().messages({

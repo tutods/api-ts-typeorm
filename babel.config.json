@@ -1,0 +1,42 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		],
+		"@babel/preset-typescript"
+	],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"alias": {
+					"@config": "./src/config",
+					"@modules": "./src/modules",
+					"@shared": "./src/shared",
+					"@interfaces": "./src/interfaces",
+					"@utils": "./src/utils",
+					"@enums": "./src/enums",
+					"@functions": "./src/functions"
+				}
+			}
+		],
+		"babel-plugin-transform-typescript-metadata",
+		[
+			"@babel/plugin-proposal-decorators",
+			{
+				"legacy": true
+			}
+		],
+		[
+			"@babel/plugin-proposal-class-properties",
+			{
+				"loose": true
+			}
+		]
+	]
+}

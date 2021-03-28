@@ -1,5 +1,5 @@
+import { EValidationMessages } from '@enums/EValidationMessages';
 import Joi from 'joi';
-import { EValidationMessages } from 'src/enums/EValidationMessages';
 
 const productFields = Joi.object().keys({
 	id: Joi.string()

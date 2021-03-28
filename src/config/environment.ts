@@ -1,7 +1,11 @@
-import { IAuthEnv, IRedisEnv, IServerEnv } from '@interfaces/IEnvironment';
+import { getTime, getTypeOfTime } from '@functions/timeFunctions';
+import {
+	IAuthEnv,
+	IMailEnv,
+	IRedisEnv,
+	IServerEnv
+} from '@interfaces/IEnvironment';
 import dotenv from 'dotenv';
-import { getTime, getTypeOfTime } from 'src/functions/timeFunctions';
-import { IMailEnv } from './../interfaces/IEnvironment';
 dotenv.config();
 
 const {

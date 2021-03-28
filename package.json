@@ -17,12 +17,14 @@
 	"author": "Daniel Sousa @TutoDS <jdaniel.asousa@gmail.com>",
 	"license": "MIT",
 	"scripts": {
+		"start": "node dist/shared/http/server.js",
+		"prebuild": "rimraf dist",
+		"build": "babel ./src --extensions \".js,.ts\" --out-dir dist --copy-files",
 		"dev": "tsnd --inspect --transpile-only --ignore-watch node_modules -r tsconfig-paths/register src/shared/http/server.ts",
 		"lint": "eslint . --ext .ts",
 		"lint:fix": "eslint . --ext .ts --fix",
 		"format": "prettier --write .",
-		"typeorm": "tsnd ./node_modules/typeorm/cli.js",
-		"start": "ts-node src/index.ts"
+		"typeorm": "tsnd ./node_modules/typeorm/cli.js"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
@@ -42,10 +44,18 @@
 		"rate-limiter-flexible": "^2.2.1",
 		"redis": "^3.0.2",
 		"reflect-metadata": "^0.1.10",
+		"rimraf": "^3.0.2",
 		"typeorm": "0.2.31",
 		"typeorm-pagination": "^2.0.1"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.13.10",
+		"@babel/core": "^7.13.13",
+		"@babel/node": "^7.13.13",
+		"@babel/plugin-proposal-class-properties": "^7.13.0",
+		"@babel/plugin-proposal-decorators": "^7.13.5",
+		"@babel/preset-env": "^7.13.12",
+		"@babel/preset-typescript": "^7.13.0",
 		"@types/bcryptjs": "^2.4.2",
 		"@types/cors": "^2.8.10",
 		"@types/date-fns": "^2.6.0",
@@ -63,6 +73,8 @@
 		"@types/reflect-metadata": "^0.1.0",
 		"@typescript-eslint/eslint-plugin": "^4.16.1",
 		"@typescript-eslint/parser": "^4.16.1",
+		"babel-plugin-module-resolver": "^4.1.0",
+		"babel-plugin-transform-typescript-metadata": "^0.3.2",
 		"eslint": "^7.21.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-prettier": "^3.3.1",

@@ -16,6 +16,7 @@
 			"@shared/*": ["src/shared/*"],
 			"@interfaces/*": ["src/interfaces/*"],
 			"@utils/*": ["src/utils/*"],
+			"@enums/*": ["src/enums/*"],
 			"@functions/*": ["src/functions/*"]
 		},
 		"typeRoots": ["@types", "./node_modules/@types"],
@@ -25,6 +26,5 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true
-	},
-	"include": ["./src/**/*"]
+	}
 }

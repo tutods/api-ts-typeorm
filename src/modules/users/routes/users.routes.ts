@@ -1,4 +1,5 @@
 import { uploadConfig } from '@config/upload';
+import { checkIsImage } from '@functions/checkIsImage';
 import { isAuthenticated } from '@shared/middlewares/isAuthenticated';
 import {
 	joiBodyValidation,
@@ -6,7 +7,6 @@ import {
 } from '@shared/middlewares/joiValidation';
 import { Router } from 'express';
 import multer from 'multer';
-import { checkIsImage } from 'src/functions/checkIsImage';
 import { userAvatarController } from '../controllers/UserAvatarController';
 import { UserController } from '../controllers/UserController';
 import {
