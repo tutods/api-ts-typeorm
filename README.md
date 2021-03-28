@@ -18,7 +18,7 @@
 </a>
 
 <a href="#">
-<img alt="Reis" src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white"/>
+<img alt="Redis" src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white"/>
 </a>
 
 <a href="#">
@@ -89,6 +89,11 @@ I have some changes in my project, like:
     	}
     }
     ```
+
+<h2 style="margin-top: 20px; font-weight: 300">📜 ToDo:</h2>
+
+1. Swagger Documentation
+2. Wiki in **GitHub**
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 
