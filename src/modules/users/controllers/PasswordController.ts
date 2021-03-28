@@ -1,3 +1,4 @@
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { ResetPasswordService } from '../services/ResetPasswordService';
 import { SendForgotPasswordService } from '../services/SendForgotPasswordService';
@@ -26,7 +27,7 @@ class PasswordController {
 			password
 		});
 
-		return res.status(result.code).json(result);
+		return res.status(result.code).json(classToClass(result));
 	}
 }
 

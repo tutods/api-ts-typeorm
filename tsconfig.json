@@ -15,6 +15,7 @@
 			"@modules/*": ["src/modules/*"],
 			"@shared/*": ["src/shared/*"],
 			"@interfaces/*": ["src/interfaces/*"],
+			"@utils/*": ["src/utils/*"],
 			"@functions/*": ["src/functions/*"]
 		},
 		"typeRoots": ["@types", "./node_modules/@types"],

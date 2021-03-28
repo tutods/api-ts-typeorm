@@ -1,4 +1,5 @@
 import { ISendMail } from '@interfaces/ISendMail';
+import { logging } from '@utils/logging';
 import nodemailer from 'nodemailer';
 import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
 
@@ -35,8 +36,8 @@ class EtherealMail {
 			html: await mailTemplate.parse(templateData)
 		});
 
-		console.log('message sent: %s', message.messageId);
-		console.log('preview url: %s', nodemailer.getTestMessageUrl(message));
+		logging(`📤 Message ID: ${message.messageId}`);
+		logging(`✉️ Preview Url: ${nodemailer.getTestMessageUrl(message)}`);
 	}
 }
 

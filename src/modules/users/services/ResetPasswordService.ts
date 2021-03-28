@@ -21,7 +21,7 @@ class ResetPasswordService extends BaseUserService {
 		if (!userToken) {
 			throw new AppError(
 				`Your token already expired! Please make a new forgot password request.`,
-				400
+				403
 			);
 		}
 
@@ -30,7 +30,7 @@ class ResetPasswordService extends BaseUserService {
 		if (!user) {
 			throw new AppError(
 				`Your token already expired! Please make a new forgot password request.`,
-				400
+				403
 			);
 		}
 
@@ -42,7 +42,6 @@ class ResetPasswordService extends BaseUserService {
 
 		if (time === 'minutes') {
 			compareDate = addMinutes(tokenCreatedAt, expires);
-			console.log('entrou', compareDate);
 		} else if (authEnv.emailToken.time === 'hours') {
 			compareDate = addHours(tokenCreatedAt, expires);
 		} else {
@@ -52,7 +51,7 @@ class ResetPasswordService extends BaseUserService {
 		if (isAfter(Date.now(), compareDate)) {
 			throw new AppError(
 				`Your token already expired! Please make a new forgot password request.`,
-				400
+				403
 			);
 		}
 

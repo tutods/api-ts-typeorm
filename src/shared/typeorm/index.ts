@@ -1,9 +1,10 @@
+import { loggingError, loggingInfo } from '@utils/logging';
 import { createConnection } from 'typeorm';
 
 createConnection()
 	.then(() => {
-		console.log('📀 Database connected with success!');
+		loggingInfo('📀 Database connected with success!');
 	})
 	.catch((err) => {
-		console.log(`❌ Error connecting to database: ${err}`);
+		loggingError(`❌ Error connecting to database:\n ${err}`);
 	});
