@@ -6,7 +6,6 @@ interface IMailContact {
 }
 
 export interface ISendMail {
-	from: IMailContact;
 	to: IMailContact;
 	subject: string;
 	templateData: IParseMail;

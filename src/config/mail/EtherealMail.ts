@@ -1,3 +1,4 @@
+import { mailEnv } from '@config/environment';
 import { ISendMail } from '@interfaces/ISendMail';
 import { logging } from '@utils/logging';
 import nodemailer from 'nodemailer';
@@ -5,7 +6,6 @@ import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
 
 class EtherealMail {
 	static async sendMail({
-		from,
 		to,
 		subject,
 		templateData
@@ -25,8 +25,8 @@ class EtherealMail {
 
 		const message = await transporter.sendMail({
 			from: {
-				name: from.name,
-				address: from.email
+				name: mailEnv.from.name,
+				address: mailEnv.from.email
 			},
 			to: {
 				name: to.name,

@@ -1,5 +1,5 @@
 import { authEnv, serverEnv } from '@config/environment';
-import { EtherealMail } from '@config/mail/EtherealMail';
+import { MailConfig } from '@config/mail/mailConfig';
 import { AppError } from '@shared/errors/AppError';
 import path from 'path';
 import { getCustomRepository } from 'typeorm';
@@ -28,8 +28,7 @@ class SendForgotPasswordService extends BaseUserService {
 		);
 
 		if (userToken) {
-			await EtherealMail.sendMail({
-				from: { name: 'Daniel Sousa', email: 'geral@daniel-sousa.com' },
+			await MailConfig.sendMail({
 				to: { name: user.name, email: user.email },
 				subject: 'Reset your password',
 				templateData: {

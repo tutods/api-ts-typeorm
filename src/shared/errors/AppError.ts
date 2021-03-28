@@ -6,8 +6,6 @@ class AppError extends Error {
 		super(message);
 		this.message = message;
 		this.code = code;
-
-		console.log(message);
 	}
 }
 

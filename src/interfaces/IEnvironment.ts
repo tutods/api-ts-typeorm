@@ -28,3 +28,18 @@ export interface IRedisEnv {
 	port: number;
 	password: string;
 }
+
+export interface IMailEnv {
+	driver: string;
+	mail: string;
+	password: string;
+	smtp: {
+		host: string;
+		port: number;
+		secure: boolean;
+	};
+	from: {
+		email: string;
+		name: string;
+	};
+}
