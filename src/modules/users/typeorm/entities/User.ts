@@ -38,7 +38,7 @@ class User {
 			return null;
 		}
 
-		return `http://localhost:${serverEnv.port}/uploads/${this.avatar}`;
+		return `${serverEnv.host}:${serverEnv.port}/uploads/${this.avatar}`;
 	}
 }
 

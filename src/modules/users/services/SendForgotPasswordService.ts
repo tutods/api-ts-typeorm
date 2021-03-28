@@ -36,7 +36,7 @@ class SendForgotPasswordService extends BaseUserService {
 					file: emailTemplate,
 					variables: {
 						name: user.name,
-						link: `http://localhost:${serverEnv.port}/api/reset-password/${userToken.token}`,
+						link: `${serverEnv.host}:${serverEnv.port}/api/reset-password/${userToken.token}`,
 						time: `${authEnv.emailToken.expires} ${authEnv.emailToken.time}`
 					}
 				}

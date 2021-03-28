@@ -1,4 +1,5 @@
 export interface IServerEnv {
+	host: string;
 	port: number;
 }
 

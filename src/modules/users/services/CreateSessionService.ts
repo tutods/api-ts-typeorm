@@ -2,6 +2,7 @@ import { authEnv } from '@config/environment';
 import { IAuthSession } from '@interfaces/IAuth';
 import { AppError } from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
+import { classToClass } from 'class-transformer';
 import { sign } from 'jsonwebtoken';
 import { BaseUserService } from './BaseUserService';
 
@@ -24,9 +25,7 @@ class CreateSessionService extends BaseUserService {
 			throw new AppError('Email or password incorrect!', 401);
 		}
 
-		const { password: userPassword, ...otherInfo } = user;
-
-		const token = sign(otherInfo, authEnv.secret, {
+		const token = sign({ user: classToClass(user) }, authEnv.secret, {
 			subject: user.id,
 			expiresIn: authEnv.expires
 		});

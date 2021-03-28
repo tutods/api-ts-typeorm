@@ -1,9 +1,9 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { ResetPasswordService } from '../services/ResetPasswordService';
 import { SendForgotPasswordService } from '../services/SendForgotPasswordService';
 
 class PasswordController {
-	public async forgot(req: Request, res: Response, next: NextFunction) {
+	public async forgot(req: Request, res: Response) {
 		const { email } = req.body;
 
 		const sendForgotPasswordEmail = new SendForgotPasswordService();
@@ -15,7 +15,7 @@ class PasswordController {
 		return res.status(204).json();
 	}
 
-	public async reset(req: Request, res: Response, next: NextFunction) {
+	public async reset(req: Request, res: Response) {
 		const { password } = req.body;
 		const { token } = req.params;
 

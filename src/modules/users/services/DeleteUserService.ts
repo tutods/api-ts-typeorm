@@ -16,13 +16,10 @@ class DeleteUserService extends BaseUserService {
 
 		await this.repository.remove(user);
 
-		// get user info, removing the id and password
-		const { id: userId, password: userPwd, ...userData } = user;
-
 		return {
 			code: 200,
 			message: 'User removed with success!',
-			user: userData
+			user: user
 		};
 	}
 }

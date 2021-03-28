@@ -4,6 +4,7 @@ import { getTime, getTypeOfTime } from 'src/functions/timeFunctions';
 dotenv.config();
 
 const {
+	HOST,
 	PORT,
 	SALT,
 	SECRET,
@@ -15,6 +16,7 @@ const {
 } = process.env;
 
 export const serverEnv: IServerEnv = {
+	host: HOST || 'http://localhost',
 	port: Number(PORT) || 3333
 };
 

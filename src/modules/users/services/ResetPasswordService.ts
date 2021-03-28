@@ -34,15 +34,15 @@ class ResetPasswordService extends BaseUserService {
 			);
 		}
 
-		// Validate if token have more than
+		// Validate if token have expired
 		const tokenCreatedAt = userToken.created_at;
-
 		let compareDate: Date;
 
 		const { expires, time } = authEnv.emailToken;
 
 		if (time === 'minutes') {
 			compareDate = addMinutes(tokenCreatedAt, expires);
+			console.log('entrou', compareDate);
 		} else if (authEnv.emailToken.time === 'hours') {
 			compareDate = addHours(tokenCreatedAt, expires);
 		} else {
@@ -60,12 +60,10 @@ class ResetPasswordService extends BaseUserService {
 
 		await this.repository.save(user);
 
-		const { id, password: userPwd, ...userData } = user;
-
 		return {
 			code: 200,
 			message: 'User password updated with success!',
-			user: userData
+			user
 		};
 	}
 }
