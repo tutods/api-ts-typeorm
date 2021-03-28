@@ -1,3 +1,4 @@
+import { isAuthenticated } from '@shared/middlewares/isAuthenticated';
 import {
 	joiBodyValidation,
 	joiParamsValidation
@@ -9,7 +10,6 @@ import {
 	customerIdParam,
 	customerUpdateBody
 } from '../validations/CustomersSchema';
-import { isAuthenticated } from './../../../shared/middlewares/isAuthenticated';
 
 const controller = new CustomerController();
 const customerRoutes = Router();

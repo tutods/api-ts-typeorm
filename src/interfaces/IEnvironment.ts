@@ -21,3 +21,9 @@ export interface IAuthEnv {
 		time: string;
 	};
 }
+
+export interface IRedisEnv {
+	host: string;
+	port: number;
+	password: string;
+}

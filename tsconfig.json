@@ -14,7 +14,8 @@
 			"@config/*": ["src/config/*"],
 			"@modules/*": ["src/modules/*"],
 			"@shared/*": ["src/shared/*"],
-			"@interfaces/*": ["src/interfaces/*"]
+			"@interfaces/*": ["src/interfaces/*"],
+			"@functions/*": ["src/functions/*"]
 		},
 		"typeRoots": ["@types", "./node_modules/@types"],
 		"esModuleInterop": true,
