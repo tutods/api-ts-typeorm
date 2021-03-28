@@ -14,7 +14,7 @@ class CreateProductService extends BaseProductService {
 		price,
 		quantity
 	}: IRequest): Promise<IProductChanged> {
-		const productExists = await this.repository.fidByName(name);
+		const productExists = await this.repository.findByName(name);
 
 		if (productExists) {
 			throw new AppError(`Already exists one product with name ${name}!`);
