@@ -3,7 +3,7 @@ export const loggingInfo = (message: string): void => {
 };
 
 export const logging = (message: string): void => {
-	console.log(`${getTimeStamp()}] ${message}`);
+	console.log(`[${getTimeStamp()}] ${message}`);
 };
 
 export const loggingWarn = (message: string): void => {
@@ -17,7 +17,9 @@ export const loggingError = (message: string): void => {
 };
 
 export const loggingDebug = (message: string): void => {
-	console.log(`\x1b[35m[${getTimeStamp()}] [DEBUG] ${message}\x1B[37m`);
+	console.log(
+		`\x1b[35m[${getTimeStamp()}] \x1B[1m[DEBUG]\x1B[0mx1b[35m ${message}\x1B[37m`
+	);
 };
 
 const getTimeStamp = (): string => {

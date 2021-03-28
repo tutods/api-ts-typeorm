@@ -1,10 +1,7 @@
-import { uploadConfig } from '@config/upload';
+import { DiskStorageProvider } from '@config/upload/DiskStorageProvider';
 import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
-import fs from 'fs';
-import path from 'path';
 import { BaseUserService } from './BaseUserService';
-
 interface IRequest {
 	id: string;
 	avatar: string;
@@ -12,6 +9,8 @@ interface IRequest {
 
 class UpdateUserAvatarService extends BaseUserService {
 	public async execute({ avatar, id }: IRequest): Promise<IUserChanged> {
+		const storageProvider = new DiskStorageProvider();
+
 		const user = await this.repository.findById(id);
 
 		if (!user) {
@@ -19,15 +18,11 @@ class UpdateUserAvatarService extends BaseUserService {
 		}
 
 		if (user.avatar) {
-			const filePath = path.join(uploadConfig.directory, user.avatar);
-			const fileExists = await fs.promises.stat(filePath);
-
-			if (fileExists) {
-				await fs.promises.unlink(filePath);
-			}
+			await storageProvider.deleteFile(user.avatar);
 		}
 
-		user.avatar = avatar;
+		const fileName = await storageProvider.saveFile(avatar);
+		user.avatar = fileName;
 
 		await this.repository.save(user);
 

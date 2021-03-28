@@ -435,3 +435,5 @@ uploads/*
 !uploads/.gitkeep
 
 ormconfig.json
+
+temp/

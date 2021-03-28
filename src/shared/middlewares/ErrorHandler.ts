@@ -7,6 +7,7 @@ const errorHandler = (
 	error: JoiError | AppError | Error,
 	request: Request,
 	response: Response,
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	next: NextFunction
 ) => {
 	// Error is instance of App Error
