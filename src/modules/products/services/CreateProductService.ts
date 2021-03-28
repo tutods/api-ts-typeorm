@@ -26,6 +26,9 @@ class CreateProductService extends BaseProductService {
 			quantity
 		});
 
+		// Remove old info in Redis
+		await this.redisCache.invalidate('PRODUCT_LIST');
+
 		try {
 			await this.repository.save(product);
 		} catch (err) {

@@ -6,7 +6,8 @@ import { Router } from 'express';
 import { ProductController } from '../controllers/ProductController';
 import {
 	productGenericBody,
-	productIdParam
+	productIdParam,
+	productUpdateBody
 } from '../validations/ProductSchema';
 
 const controller = new ProductController();
@@ -19,7 +20,7 @@ productRoutes
 	.put(
 		'/:id',
 		joiParamsValidation(productIdParam),
-		joiBodyValidation(productGenericBody),
+		joiBodyValidation(productUpdateBody),
 		controller.update
 	)
 	.delete('/:id', joiParamsValidation(productIdParam), controller.delete);

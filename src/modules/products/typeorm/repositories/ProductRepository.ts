@@ -7,7 +7,7 @@ interface IFindAllProducts {
 
 @EntityRepository(Product)
 class ProductRepository extends Repository<Product> {
-	public async fidByName(name: string): Promise<Product | undefined> {
+	public async findByName(name: string): Promise<Product | undefined> {
 		const product = this.findOne({ name });
 
 		return product;

@@ -14,6 +14,9 @@ class DeleteProductService extends BaseProductService {
 			throw new AppError(`Product not found!`, 404);
 		}
 
+		// Remove old info in Redis
+		await this.redisCache.invalidate('PRODUCT_LIST');
+
 		await this.repository.remove(product);
 
 		return {

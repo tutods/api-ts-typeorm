@@ -8,6 +8,7 @@ class RedisCache {
 		this.client = new Redis(cacheConfig.config.redis);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	public async save(key: KeyType, value: any): Promise<void> {
 		await this.client.set(key, JSON.stringify(value));
 	}

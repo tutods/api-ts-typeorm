@@ -18,15 +18,18 @@ class UpdateProductService extends BaseProductService {
 	}: IRequest): Promise<IProductChanged> {
 		const product = await this.repository.findOne(id);
 
-		const productWithNameExists = await this.repository.fidByName(name);
+		if (!product) {
+			throw new AppError('Product not found!', 404);
+		}
 
-		if (productWithNameExists) {
+		const productExists = await this.repository.findByName(name);
+
+		if (productExists) {
 			throw new AppError(`Product with name ${name} already exists!`);
 		}
 
-		if (!product) {
-			throw new AppError(`Product not found!`, 404);
-		}
+		// Invalidate products in Redis
+		this.redisCache.invalidate('PRODUCT_LIST');
 
 		product.name = name;
 		product.price = price;
