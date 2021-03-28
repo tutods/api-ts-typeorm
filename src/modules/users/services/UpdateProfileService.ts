@@ -54,12 +54,10 @@ class UpdateProfileService extends BaseUserService {
 
 		await this.repository.save(user);
 
-		const { id, password: userPwd, ...userData } = user;
-
 		return {
 			code: 200,
 			message: 'Your profile updated with success!',
-			user: userData
+			user
 		};
 	}
 }

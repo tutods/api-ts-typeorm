@@ -14,11 +14,9 @@ class ShowProfileService extends BaseUserService {
 			throw new AppError('User not found!', 404);
 		}
 
-		const { id, password, ...userData } = user;
-
 		return {
 			code: 200,
-			user: userData
+			user
 		};
 	}
 }

@@ -31,12 +31,10 @@ class UpdateUserAvatarService extends BaseUserService {
 
 		await this.repository.save(user);
 
-		const { password, ...otherInfo } = user;
-
 		return {
 			message: 'User Avatar updated with success!',
 			code: 200,
-			user: otherInfo
+			user: user
 		};
 	}
 }

@@ -1,13 +1,12 @@
 import { AppError } from '@shared/errors/AppError';
 import { JoiError } from '@shared/errors/JoiError';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { MulterError } from 'multer';
 
 const errorHandler = (
 	error: JoiError | AppError | Error,
 	request: Request,
-	response: Response,
-	next: NextFunction
+	response: Response
 ) => {
 	if (error instanceof AppError) {
 		return response.status(error.code).json({
