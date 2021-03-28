@@ -66,7 +66,29 @@ I have some changes in my project, like:
 -   Create enum <small>(in `src/enums/` and starts with `E` to represent the enum)</small> to storage the most strings texts to **Joi** validations;
 -   Create middlewares to **Joi Validation** (`shared/middlewares/joiValidation.ts`);
 -   I don't create configs to AWS S3;
--   Use **`rimraf`** package to delete `dist/` folder before Babel create build.
+-   Use **`rimraf`** package to delete `dist/` folder before Babel create build;
+
+<h2 style="margin-top: 20px; font-weight: 300">📄 Notes</h2>
+
+-   To run production mode (`yarn start` - files in `dist/` folder) you need change the `ormconfig.json` to:
+
+    ```json
+    {
+    	"type": "postgres",
+    	"host": "localhost",
+    	"port": "5432",
+    	"username": "user",
+    	"password": "password",
+    	"database": "database",
+    	"synchronize": true,
+    	"entities": ["dist/modules/**/typeorm/entities/*.js"],
+    	"migrations": ["dist/shared/typeorm/migrations/*.js"],
+    	"cli": {
+    		"entitiesDir": "dist/modules /**/typeorm/entities",
+    		"migrationsDir": "./dist/shared/typeorm/migrations"
+    	}
+    }
+    ```
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 
