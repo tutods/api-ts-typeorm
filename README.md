@@ -65,6 +65,7 @@ I have some changes in my project, like:
 -   Create class **`JoiError`** to format the errors from **Joi** validation;
 -   Create enum <small>(in `src/enums/` and starts with `E` to represent the enum)</small> to storage the most strings texts to **Joi** validations;
 -   Create middlewares to **Joi Validation** (`shared/middlewares/joiValidation.ts`);
+-   I don't create configs to AWS S3;
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 

@@ -3,9 +3,13 @@ import Redis, { KeyType, Redis as RedisClient } from 'ioredis';
 
 class RedisCache {
 	private client: RedisClient;
+	private connected = false;
 
 	constructor() {
-		this.client = new Redis(cacheConfig.config.redis);
+		if (!this.connected) {
+			this.client = new Redis(cacheConfig.config.redis);
+			this.connected = true;
+		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,4 +32,4 @@ class RedisCache {
 	}
 }
 
-export { RedisCache };
+export default new RedisCache();

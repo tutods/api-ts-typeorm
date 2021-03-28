@@ -10,17 +10,13 @@ class DiskStorageProvider {
 		'uploads'
 	);
 
-	private tmpFolder = path.resolve(__dirname, '..', '..', 'temp');
+	private tmpFolder = path.resolve(__dirname, '..', '..', '..', 'temp');
 
 	public async saveFile(file: string): Promise<string> {
-		console.log(file);
-
 		await fs.promises.rename(
 			path.resolve(this.tmpFolder, file),
 			path.resolve(this.destinationPath, file)
 		);
-
-		console.log(path.resolve(this.destinationPath, file));
 
 		return file;
 	}
@@ -31,7 +27,7 @@ class DiskStorageProvider {
 		try {
 			// Validate if file exists
 			await fs.promises.stat(filePath);
-		} catch {
+		} catch (err) {
 			return;
 		}
 

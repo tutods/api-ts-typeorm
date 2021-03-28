@@ -47,8 +47,8 @@ export const authEnv: IAuthEnv = {
 
 export const mailEnv: IMailEnv = {
 	driver: MAIL_DRIVER || 'ethereal',
-	mail: MAIL || '',
-	password: MAIL_PASS || '',
+	mail: MAIL,
+	password: MAIL_PASS,
 	smtp: {
 		host: MAIL_HOST || 'localhost',
 		port: Number(MAIL_PORT) || 25,
