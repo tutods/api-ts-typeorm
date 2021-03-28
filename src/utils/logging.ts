@@ -1,5 +1,5 @@
 export const loggingInfo = (message: string): void => {
-	console.log('\x1b[34m', `[${getTimeStamp()}] ${message}`);
+	console.log(`\x1b[34m[${getTimeStamp()}] ${message}`);
 };
 
 export const logging = (message: string): void => {
@@ -7,15 +7,15 @@ export const logging = (message: string): void => {
 };
 
 export const loggingWarn = (message: string): void => {
-	console.log('\x1b[33m', `[${getTimeStamp()}] ${message}`);
+	console.log(`\x1b[33m[${getTimeStamp()}] ${message}`);
 };
 
 export const loggingError = (message: string): void => {
-	console.log('\x1b[31m', `[${getTimeStamp()}] [ERROR] ${message}`);
+	console.log(`\x1b[31m[${getTimeStamp()}] [ERROR] ${message}`);
 };
 
 export const loggingDebug = (message: string): void => {
-	console.log('\x1b[35m', `[${getTimeStamp()}] [DEBUG] ${message}`);
+	console.log(`\x1b[35m[${getTimeStamp()}] [DEBUG] ${message}`);
 };
 
 const getTimeStamp = (): string => {

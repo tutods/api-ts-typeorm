@@ -1,13 +1,15 @@
 import { AppError } from '@shared/errors/AppError';
 import { JoiError } from '@shared/errors/JoiError';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { MulterError } from 'multer';
 
 const errorHandler = (
 	error: JoiError | AppError | Error,
 	request: Request,
-	response: Response
+	response: Response,
+	next: NextFunction
 ) => {
+	// Error is instance of App Error
 	if (error instanceof AppError) {
 		return response.status(error.code).json({
 			status: error.code,
@@ -15,6 +17,7 @@ const errorHandler = (
 		});
 	}
 
+	// Error in Upload files
 	if (error instanceof MulterError) {
 		return response.status(400).send({
 			code: 400,
@@ -23,6 +26,7 @@ const errorHandler = (
 		});
 	}
 
+	// Error in Joi Validations
 	if (error instanceof JoiError) {
 		return response.status(error.code).json({
 			status: error.code,

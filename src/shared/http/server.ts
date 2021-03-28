@@ -1,6 +1,6 @@
 import { serverEnv } from '@config/environment';
 import { uploadConfig } from '@config/upload';
-import { errorHandler } from '@shared/middlewares/ErrorHandler';
+import { errorHandler } from '@shared/middlewares/errorHandler';
 import { rateLimiter } from '@shared/middlewares/rateLimiter';
 import '@shared/typeorm';
 import { loggingInfo } from '@utils/logging';
@@ -11,30 +11,23 @@ import 'reflect-metadata';
 import { pagination } from 'typeorm-pagination';
 import { apiRoutes } from './routes';
 
+// Server Environment Variables
 const { port, host } = serverEnv;
 
 const app = express();
 
-app
-	// Cors Middleware
-	.use(cors())
+app.use(cors())
 
-	// Middleware to use JSON
 	.use(express.json())
 
-	// Middleware to limit number of requests
-	.use(rateLimiter)
+	.use(rateLimiter) // ==> Limit requests
 
-	// Pagination Middleware
-	.use(pagination)
+	.use(pagination) // ==> Pagination
 
-	// Static Files
-	.use('/uploads', express.static(uploadConfig.directory))
+	.use('/uploads', express.static(uploadConfig.directory)) // ==> Static Files
 
-	// Api Routes
-	.use('/api', apiRoutes)
+	.use('/api', apiRoutes) // ==> Api Routes
 
-	// 404 Not Found Route
 	.use((req: Request, res: Response) => {
 		const url = req.url;
 
@@ -42,10 +35,9 @@ app
 			code: 404,
 			message: `The ${url} not found!`
 		});
-	})
+	}) // ==> 404 Not Found Route
 
-	// Error Handler Middleware
-	.use(errorHandler)
+	.use(errorHandler) // ==> Error Handler
 
 	.listen(port, () => {
 		loggingInfo(`⚡️ Server running on port ${port} (${host}:${port})`);

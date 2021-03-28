@@ -3,6 +3,7 @@ import { loggingWarn } from '@utils/logging';
 import { NextFunction, Request, Response } from 'express';
 import { RateLimiterRedis } from 'rate-limiter-flexible';
 import redis from 'redis';
+import { AppError } from '@shared/errors/AppError';
 
 // Redis Client with ENV data
 const redisClient = redis.createClient({
@@ -31,10 +32,10 @@ const rateLimiter = async (
 	} catch (err) {
 		loggingWarn(`Too many requests from: ${req.ip}`);
 
-		res.status(429).json({
-			code: 429,
-			message: 'Too many requests! Try again after 30 seconds.'
-		});
+		throw new AppError(
+			'Too many requests. Try again after 30 seconds.',
+			429
+		);
 	}
 };
 
