@@ -1,11 +1,13 @@
 import { mailEnv } from '@config/environment';
 import { ISendMail } from '@interfaces/ISendMail';
+import { AppError } from '@shared/errors/AppError';
 import { logging, loggingError } from '@utils/logging';
 import { createTransport, Transporter } from 'nodemailer';
 import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
 
 class SMTPEmail {
 	private transporter: Transporter;
+	private mailTemplate = new HandlebarsMailTemplate();
 
 	constructor() {
 		this.transporter = createTransport({
@@ -24,8 +26,6 @@ class SMTPEmail {
 		subject,
 		templateData
 	}: ISendMail): Promise<void> {
-		const mailTemplate = new HandlebarsMailTemplate();
-
 		try {
 			await this.transporter.sendMail({
 				from: {
@@ -37,12 +37,13 @@ class SMTPEmail {
 					address: to.email
 				},
 				subject,
-				html: await mailTemplate.parse(templateData)
+				html: await this.mailTemplate.parse(templateData)
 			});
 
 			logging(`📤 Email send with success to ${to.email}`);
 		} catch (err) {
 			loggingError(err);
+			throw new AppError(`Have an error sending email to ${to.email}`);
 		}
 	}
 }

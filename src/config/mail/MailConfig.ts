@@ -4,13 +4,11 @@ import { EtherealMail } from './EtherealMail';
 import { SMTPEmail } from './SMTPMail';
 
 class MailConfig {
-	// constructor() {}
-
 	static async sendMail({ to, subject, templateData }: ISendMail) {
 		if (mailEnv.driver === 'smtp') {
 			new SMTPEmail().sendMail({ to, subject, templateData });
 		} else {
-			EtherealMail.sendMail({
+			new EtherealMail().sendMail({
 				to,
 				subject,
 				templateData

@@ -1,29 +1,36 @@
 import { mailEnv } from '@config/environment';
 import { ISendMail } from '@interfaces/ISendMail';
 import { logging } from '@utils/logging';
-import nodemailer from 'nodemailer';
+import nodemailer, { TestAccount, Transporter } from 'nodemailer';
 import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
 
 class EtherealMail {
-	static async sendMail({
+	private transporter: Transporter;
+	private testAccount: TestAccount;
+	private mailTemplate = new HandlebarsMailTemplate();
+
+	// Method to create transporter and test account
+	private async setup() {
+		this.testAccount = await nodemailer.createTestAccount();
+		this.transporter = nodemailer.createTransport({
+			host: this.testAccount.smtp.host,
+			port: this.testAccount.smtp.port,
+			secure: this.testAccount.smtp.secure,
+			auth: {
+				user: this.testAccount.user,
+				pass: this.testAccount.pass
+			}
+		});
+	}
+
+	public async sendMail({
 		to,
 		subject,
 		templateData
 	}: ISendMail): Promise<void> {
-		const account = await nodemailer.createTestAccount();
-		const transporter = nodemailer.createTransport({
-			host: account.smtp.host,
-			port: account.smtp.port,
-			secure: account.smtp.secure,
-			auth: {
-				user: account.user,
-				pass: account.pass
-			}
-		});
+		await this.setup();
 
-		const mailTemplate = new HandlebarsMailTemplate();
-
-		const message = await transporter.sendMail({
+		const message = await this.transporter.sendMail({
 			from: {
 				name: mailEnv.from.name,
 				address: mailEnv.from.email
@@ -33,10 +40,12 @@ class EtherealMail {
 				address: to.email
 			},
 			subject,
-			html: await mailTemplate.parse(templateData)
+			html: await this.mailTemplate.parse(templateData)
 		});
 
+		// Message ID
 		logging(`📤 Message ID: ${message.messageId}`);
+		// Ethereal URL
 		logging(`✉️ Preview Url: ${nodemailer.getTestMessageUrl(message)}`);
 	}
 }
