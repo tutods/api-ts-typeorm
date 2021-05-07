@@ -1,6 +1,6 @@
 import { StorageEngine } from 'multer';
 
-type UploadConfig = {
+type UploadConfigType = {
 	driver: 's3' | 'disk';
 	directory: string;
 	tmpFolder: string;
@@ -14,4 +14,4 @@ type UploadConfig = {
 	};
 };
 
-export { UploadConfig };
+export { UploadConfigType };

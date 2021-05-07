@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { UserShow } from '@shared/types/User';
+import { UserShowType } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
 type Request = {
@@ -7,7 +7,7 @@ type Request = {
 };
 
 class ShowProfileService extends BaseUserService {
-	public async execute({ userId }: Request): Promise<UserShow> {
+	public async execute({ userId }: Request): Promise<UserShowType> {
 		const user = await this.repository.findById(userId);
 
 		if (!user) {

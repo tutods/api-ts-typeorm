@@ -1,8 +1,8 @@
-import { UserList } from '@shared/types/User';
+import { UserListType } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
 class ListUserService extends BaseUserService {
-	public async execute(): Promise<UserList> {
+	public async execute(): Promise<UserListType> {
 		const users = await this.repository.find();
 
 		return {

@@ -1,10 +1,10 @@
 import { RedisOptions } from 'ioredis';
 
-type CacheConfig = {
+type CacheConfigType = {
 	config: {
 		redis: RedisOptions;
 	};
 	driver: string;
 };
 
-export { CacheConfig };
+export { CacheConfigType };

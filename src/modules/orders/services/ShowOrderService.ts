@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { OrderShow } from '@shared/types/Order';
+import { OrderShowType } from '@shared/types/Order';
 import { BaseOrderService } from './BaseOrderService';
 
 type Request = {
@@ -7,7 +7,7 @@ type Request = {
 };
 
 class ShowOrderService extends BaseOrderService {
-	public async execute({ id }: Request): Promise<OrderShow> {
+	public async execute({ id }: Request): Promise<OrderShowType> {
 		const order = await this.repository.findById(id);
 
 		if (!order) {

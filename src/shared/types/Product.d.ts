@@ -1,4 +1,4 @@
-type Product = {
+type ProductType = {
 	readonly id?: string;
 	name: string;
 	price: number;
@@ -7,21 +7,21 @@ type Product = {
 	updated_at?: Date;
 };
 
-type ProductChanged = {
+type ProductChangedType = {
 	message: string;
 	code: number;
-	product: Product;
+	product: ProductType;
 };
 
-type ProductList = {
+type ProductListType = {
 	count: number;
 	code: number;
-	products: Product[];
+	products: ProductType[];
 };
 
-type ProductShow = {
+type ProductShowType = {
 	code: number;
-	product: Product;
+	product: ProductType;
 };
 
-export { Product, ProductChanged, ProductList, ProductShow };
+export { ProductType, ProductChangedType, ProductListType, ProductShowType };

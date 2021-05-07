@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { CustomerChanged } from '@shared/types/Customer';
+import { CustomerChangedType } from '@shared/types/Customer';
 import { BaseCustomerService } from './BaseCustomerService';
 
 type Request = {
@@ -8,7 +8,10 @@ type Request = {
 };
 
 class CreateCustomerService extends BaseCustomerService {
-	public async execute({ name, email }: Request): Promise<CustomerChanged> {
+	public async execute({
+		name,
+		email
+	}: Request): Promise<CustomerChangedType> {
 		const emailExists = await this.repository.findByEmail(email);
 
 		if (emailExists) {

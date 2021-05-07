@@ -1,4 +1,4 @@
-type JoiErrors = {
+type JoiErrorsType = {
 	message: string;
 	type: string;
 	context: {
@@ -7,9 +7,9 @@ type JoiErrors = {
 	};
 };
 
-type JoiResultErrors = {
+type JoiResultErrorsType = {
 	field: string;
 	message: string;
 };
 
-export { JoiErrors, JoiResultErrors };
+export { JoiErrorsType, JoiResultErrorsType };

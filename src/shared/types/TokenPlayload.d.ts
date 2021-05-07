@@ -1,4 +1,4 @@
-type TokenPlayload = {
+type TokenPlayloadType = {
 	name: string;
 	email: string;
 	avatar?: string;
@@ -9,4 +9,4 @@ type TokenPlayload = {
 	sub: string;
 };
 
-export { TokenPlayload };
+export { TokenPlayloadType };

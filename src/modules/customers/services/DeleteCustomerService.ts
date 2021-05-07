@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { CustomerChanged } from '@shared/types/Customer';
+import { CustomerChangedType } from '@shared/types/Customer';
 import { BaseCustomerService } from './BaseCustomerService';
 
 type Request = {
@@ -7,7 +7,9 @@ type Request = {
 };
 
 class DeleteCustomerService extends BaseCustomerService {
-	public async execute({ customerId }: Request): Promise<CustomerChanged> {
+	public async execute({
+		customerId
+	}: Request): Promise<CustomerChangedType> {
 		const customer = await this.repository.findById(customerId);
 
 		if (!customer) {

@@ -1,6 +1,6 @@
 import { authEnv } from '@config/environment';
 import { AppError } from '@shared/errors/AppError';
-import { UserChanged } from '@shared/types/User';
+import { UserChangedType } from '@shared/types/User';
 import { hash } from 'bcryptjs';
 import { BaseUserService } from './BaseUserService';
 
@@ -15,7 +15,7 @@ class CreateUserService extends BaseUserService {
 		name,
 		email,
 		password
-	}: Request): Promise<UserChanged> {
+	}: Request): Promise<UserChangedType> {
 		const userExists = await this.repository.findByEmail(email);
 
 		if (userExists) {

@@ -1,6 +1,5 @@
 import { authEnv } from '@config/environment';
 import { AppError } from '@shared/errors/AppError';
-import { AuthSession } from '@shared/types/Auth';
 import { compare } from 'bcryptjs';
 import { classToClass } from 'class-transformer';
 import { sign } from 'jsonwebtoken';
@@ -12,7 +11,10 @@ type Request = {
 };
 
 class CreateSessionService extends BaseUserService {
-	public async execute({ email, password }: Request): Promise<AuthSession> {
+	public async execute({
+		email,
+		password
+	}: Request): Promise<AuthSessionType> {
 		const user = await this.repository.findByEmail(email);
 
 		if (!user) {

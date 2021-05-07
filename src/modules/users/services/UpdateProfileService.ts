@@ -1,6 +1,6 @@
 import { authEnv } from '@config/environment';
 import { AppError } from '@shared/errors/AppError';
-import { UserChanged } from '@shared/types/User';
+import { UserChangedType } from '@shared/types/User';
 import { compare, hash } from 'bcryptjs';
 import { BaseUserService } from './BaseUserService';
 
@@ -19,7 +19,7 @@ class UpdateProfileService extends BaseUserService {
 		email,
 		password,
 		oldPassword
-	}: Request): Promise<UserChanged> {
+	}: Request): Promise<UserChangedType> {
 		const user = await this.repository.findById(userId);
 
 		if (!user) {

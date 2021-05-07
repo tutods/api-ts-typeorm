@@ -1,10 +1,10 @@
-type TemplateVariable = {
+type TemplateVariableType = {
 	[key: string]: string | number;
 };
 
-type ParseMail = {
+type ParseMailType = {
 	file: string;
-	variables: TemplateVariable;
+	variables: TemplateVariableType;
 };
 
-export { ParseMail };
+export { ParseMailType };

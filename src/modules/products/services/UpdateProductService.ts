@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { ProductChanged } from '@shared/types/Product';
+import { ProductChangedType } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
 type Request = {
@@ -15,7 +15,7 @@ class UpdateProductService extends BaseProductService {
 		name,
 		price,
 		quantity
-	}: Request): Promise<ProductChanged> {
+	}: Request): Promise<ProductChangedType> {
 		const product = await this.repository.findOne(id);
 
 		if (!product) {

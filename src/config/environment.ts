@@ -1,9 +1,9 @@
 import { getTime, getTypeOfTime } from '@functions/timeFunctions';
 import {
-	AuthEnv,
-	MailEnv,
-	RedisEnv,
-	ServerEnv
+	AuthEnvType,
+	MailEnvType,
+	RedisEnvType,
+	ServerEnvType
 } from '@shared/types/Environment';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -28,18 +28,18 @@ const {
 	MAIL_DRIVER
 } = process.env;
 
-export const serverEnv: ServerEnv = {
+export const serverEnv: ServerEnvType = {
 	host: HOST || 'http://localhost',
 	port: Number(PORT) || 3333
 };
 
-export const redisEnv: RedisEnv = {
+export const redisEnv: RedisEnvType = {
 	host: REDIS_HOST || 'localhost',
 	port: Number(REDIS_PORT) || 6379,
 	password: REDIS_PASS || ''
 };
 
-export const authEnv: AuthEnv = {
+export const authEnv: AuthEnvType = {
 	salt: Number(SALT) || 10,
 	secret: SECRET || '',
 	expires: EXPIRES || '1h',
@@ -49,7 +49,7 @@ export const authEnv: AuthEnv = {
 	}
 };
 
-export const mailEnv: MailEnv = {
+export const mailEnv: MailEnvType = {
 	driver: MAIL_DRIVER || 'ethereal',
 	mail: MAIL,
 	password: MAIL_PASS,

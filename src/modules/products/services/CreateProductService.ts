@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { ProductChanged } from '@shared/types/Product';
+import { ProductChangedType } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
 type Request = {
@@ -13,7 +13,7 @@ class CreateProductService extends BaseProductService {
 		name,
 		price,
 		quantity
-	}: Request): Promise<ProductChanged> {
+	}: Request): Promise<ProductChangedType> {
 		const productExists = await this.repository.findByName(name);
 
 		if (productExists) {

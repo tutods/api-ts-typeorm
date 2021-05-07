@@ -1,6 +1,6 @@
 import { DiskStorageProvider } from '@config/upload/DiskStorageProvider';
 import { AppError } from '@shared/errors/AppError';
-import { UserChanged } from '@shared/types/User';
+import { UserChangedType } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 type Request = {
 	id: string;
@@ -8,7 +8,7 @@ type Request = {
 };
 
 class UpdateUserAvatarService extends BaseUserService {
-	public async execute({ avatar, id }: Request): Promise<UserChanged> {
+	public async execute({ avatar, id }: Request): Promise<UserChangedType> {
 		const storageProvider = new DiskStorageProvider();
 
 		const user = await this.repository.findById(id);

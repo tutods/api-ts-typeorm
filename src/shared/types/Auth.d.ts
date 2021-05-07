@@ -1,4 +1,4 @@
-type AuthUser = {
+type AuthUserType = {
 	readonly id?: string;
 	name: string;
 	email: string;
@@ -8,11 +8,11 @@ type AuthUser = {
 	updated_at?: Date;
 };
 
-type AuthSession = {
+type AuthSessionType = {
 	code: number;
 	message: string;
 	token: string;
-	user: IAuthUser;
+	user: AuthUserType;
 };
 
-export { AuthSession };
+export { AuthSessionType };

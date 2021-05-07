@@ -1,7 +1,7 @@
-import { CacheConfig } from '@shared/types/CacheConfig';
+import { CacheConfigType } from '@shared/types/CacheConfig';
 import { redisEnv } from './environment';
 
-export const cacheConfig: CacheConfig = {
+export const cacheConfig: CacheConfigType = {
 	config: {
 		redis: {
 			host: redisEnv.host,

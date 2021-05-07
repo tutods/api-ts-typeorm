@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { UserChanged } from '@shared/types/User';
+import { UserChangedType } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
 type Request = {
@@ -7,7 +7,7 @@ type Request = {
 };
 
 class DeleteUserService extends BaseUserService {
-	public async execute({ id }: Request): Promise<UserChanged> {
+	public async execute({ id }: Request): Promise<UserChangedType> {
 		const user = await this.repository.findById(id);
 
 		if (!user) {

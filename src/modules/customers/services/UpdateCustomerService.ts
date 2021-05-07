@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { CustomerChanged } from '@shared/types/Customer';
+import { CustomerChangedType } from '@shared/types/Customer';
 import { BaseCustomerService } from './BaseCustomerService';
 
 type Request = {
@@ -13,7 +13,7 @@ class UpdateCustomerService extends BaseCustomerService {
 		id,
 		name,
 		email
-	}: Request): Promise<CustomerChanged> {
+	}: Request): Promise<CustomerChangedType> {
 		const customer = await this.repository.findById(id);
 
 		if (!customer) {

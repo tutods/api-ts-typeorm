@@ -1,16 +1,16 @@
-import { Order } from './Order';
-import { Product } from './Product';
+import { OrderType } from './Order';
+import { ProductType } from './Product';
 
-type OrderProduct = {
+type OrderProductType = {
 	readonly id?: string;
 	price: number;
 	quantity: number;
 	order_id: string;
-	order?: Order;
+	order?: OrderType;
 	product_id: string;
-	product?: Product;
+	product?: ProductType;
 	created_at?: Date;
 	updated_at?: Date;
 };
 
-export { OrderProduct };
+export { OrderProductType };

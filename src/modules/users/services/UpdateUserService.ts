@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { UserChanged } from '@shared/types/User';
+import { UserChangedType } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
 type Request = {
@@ -15,7 +15,7 @@ class UpdateUserService extends BaseUserService {
 		name,
 		email,
 		password
-	}: Request): Promise<UserChanged> {
+	}: Request): Promise<UserChangedType> {
 		const user = await this.repository.findById(id);
 
 		if (!user) {

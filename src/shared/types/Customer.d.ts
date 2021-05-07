@@ -1,4 +1,4 @@
-type Customer = {
+type CustomerType = {
 	readonly id?: string;
 	name: string;
 	email: string;
@@ -6,24 +6,24 @@ type Customer = {
 	updated_at?: Date;
 };
 
-type CustomerChanged = {
+type CustomerChangedType = {
 	message: string;
 	code: number;
-	customer: ICustomer;
+	customer: CustomerType;
 };
 
-type CustomerList = {
+type CustomerListType = {
 	count: number;
 	code: number;
-	customers: ICustomer[];
+	customers: CustomerType[];
 };
 
-type CustomerShow = {
+type CustomerShowType = {
 	code: number;
-	customer: ICustomer;
+	customer: CustomerType;
 };
 
-type CustomerPaginated = {
+type CustomerPaginatedType = {
 	code?: number;
 	from: number;
 	to: number;
@@ -32,13 +32,13 @@ type CustomerPaginated = {
 	current_page: number;
 	prev_page?: number | null | undefined;
 	next_page?: number | null | undefined;
-	data: ICustomer[];
+	data: CustomerType[];
 };
 
 export {
-	Customer,
-	CustomerChanged,
-	CustomerList,
-	CustomerShow,
-	CustomerPaginated
+	CustomerType,
+	CustomerChangedType,
+	CustomerListType,
+	CustomerShowType,
+	CustomerPaginatedType
 };

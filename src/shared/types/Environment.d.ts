@@ -1,9 +1,9 @@
-type ServerEnv = {
+type ServerEnvType = {
 	host: string;
 	port: number;
 };
 
-type DatabaseEnv = {
+type DatabaseEnvType = {
 	host: string;
 	port: number;
 	user: {
@@ -13,7 +13,7 @@ type DatabaseEnv = {
 	database: string;
 };
 
-type AuthEnv = {
+type AuthEnvType = {
 	salt: number;
 	secret: string;
 	expires: string;
@@ -23,13 +23,13 @@ type AuthEnv = {
 	};
 };
 
-type RedisEnv = {
+type RedisEnvType = {
 	host: string;
 	port: number;
 	password: string;
 };
 
-type MailEnv = {
+type MailEnvType = {
 	driver: string;
 	mail?: string;
 	password?: string;
@@ -44,4 +44,10 @@ type MailEnv = {
 	};
 };
 
-export { ServerEnv, DatabaseEnv, AuthEnv, RedisEnv, MailEnv };
+export {
+	ServerEnvType,
+	DatabaseEnvType,
+	AuthEnvType,
+	RedisEnvType,
+	MailEnvType
+};

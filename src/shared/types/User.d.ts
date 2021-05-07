@@ -1,4 +1,4 @@
-type User = {
+type UserType = {
 	readonly id?: string;
 	name: string;
 	email: string;
@@ -8,21 +8,21 @@ type User = {
 	updated_at?: Date;
 };
 
-type UserChanged = {
+type UserChangedType = {
 	message: string;
 	code: number;
-	user: User;
+	user: UserType;
 };
 
-type UserList = {
+type UserListType = {
 	count: number;
 	code: number;
-	users: User[];
+	users: UserType[];
 };
 
-type UserShow = {
+type UserShowType = {
 	code: number;
-	user: User;
+	user: UserType;
 };
 
-export { User, UserChanged, UserList, UserShow };
+export { UserType, UserChangedType, UserListType, UserShowType };

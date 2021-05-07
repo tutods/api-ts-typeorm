@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { ProductShow } from '@shared/types/Product';
+import { ProductShowType } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
 type Request = {
@@ -7,7 +7,7 @@ type Request = {
 };
 
 class ShowProductService extends BaseProductService {
-	public async execute({ id }: Request): Promise<ProductShow> {
+	public async execute({ id }: Request): Promise<ProductShowType> {
 		const product = await this.repository.findOne(id);
 
 		if (!product) {

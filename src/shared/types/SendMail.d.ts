@@ -1,14 +1,14 @@
 import { ParseMail } from './ParseMail';
 
-type MailContact = {
+type MailContactType = {
 	name: string;
 	email: string;
 };
 
-type SendMail = {
-	to: MailContact;
+type SendMailType = {
+	to: MailContactType;
 	subject: string;
 	templateData: ParseMail;
 };
 
-export { MailContact, SendMail };
+export { MailContactType, SendMailType };

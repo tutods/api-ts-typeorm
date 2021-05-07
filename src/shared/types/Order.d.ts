@@ -1,30 +1,30 @@
-import { ICustomer } from './ICustomer';
-import { OrderProduct } from './OrderProduct';
+import { CustomerType } from './Customer';
+import { OrderProductType } from './OrderProduct';
 
-type Order = {
+type OrderType = {
 	readonly id?: string;
 	customer_id: string;
-	customer: ICustomer;
-	order_products: OrderProduct[];
+	customer: CustomerType;
+	order_products: OrderProductType[];
 	created_at?: Date;
 	updated_at?: Date;
 };
 
-type OrderChanged = {
+type OrderChangedType = {
 	message: string;
 	code: number;
-	order: Order;
+	order: OrderType;
 };
 
-type OrderList = {
+type OrderListType = {
 	count: number;
 	code: number;
-	orders: Order[];
+	orders: OrderType[];
 };
 
-type OrderShow = {
+type OrderShowType = {
 	code: number;
-	order: Order;
+	order: OrderType;
 };
 
-export { Order, OrderChanged, OrderList, OrderShow };
+export { OrderType, OrderChangedType, OrderListType, OrderShowType };

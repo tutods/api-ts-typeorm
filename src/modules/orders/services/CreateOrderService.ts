@@ -1,7 +1,7 @@
 import { CustomerRepository } from '@modules/customers/typeorm/repositories/CustomerRepository';
 import { ProductRepository } from '@modules/products/typeorm/repositories/ProductRepository';
 import { AppError } from '@shared/errors/AppError';
-import { OrderChanged } from '@shared/types/Order';
+import { OrderChangedType } from '@shared/types/Order';
 import { getCustomRepository } from 'typeorm';
 import { BaseOrderService } from './BaseOrderService';
 
@@ -22,7 +22,7 @@ class CreateOrderService extends BaseOrderService {
 	public async execute({
 		customerId,
 		products
-	}: Request): Promise<OrderChanged> {
+	}: Request): Promise<OrderChangedType> {
 		const customer = await this.customerRepository.findById(customerId);
 
 		if (!customer) {

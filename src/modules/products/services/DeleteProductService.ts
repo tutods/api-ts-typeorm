@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { ProductChanged } from '@shared/types/Product';
+import { ProductChangedType } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
 type Request = {
@@ -7,7 +7,7 @@ type Request = {
 };
 
 class DeleteProductService extends BaseProductService {
-	public async execute({ id }: Request): Promise<ProductChanged> {
+	public async execute({ id }: Request): Promise<ProductChangedType> {
 		const product = await this.repository.findOne(id);
 
 		if (!product) {

@@ -8,7 +8,6 @@ import cors from 'cors';
 import express, { Request, Response } from 'express';
 import 'express-async-errors';
 import 'reflect-metadata';
-import { pagination } from 'typeorm-pagination';
 import { apiRoutes } from './routes';
 
 // Server Environment Variables
@@ -21,8 +20,6 @@ app.use(cors())
 	.use(express.json())
 
 	.use(rateLimiter) // ==> Limit requests
-
-	.use(pagination) // ==> Pagination
 
 	.use('/uploads', express.static(uploadConfig.directory)) // ==> Static Files
 
@@ -40,5 +37,5 @@ app.use(cors())
 	.use(errorHandler) // ==> Error Handler
 
 	.listen(port, () => {
-		loggingInfo(`⚡️ Server running on port ${port} (${host}:${port})`);
+		loggingInfo(`🚀 Server running on port ${port} (${host}:${port})`);
 	});

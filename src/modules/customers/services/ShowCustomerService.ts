@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError';
-import { CustomerShow } from '@shared/types/Customer';
+import { CustomerShowType } from '@shared/types/Customer';
 import { BaseCustomerService } from './BaseCustomerService';
 
 type Request = {
@@ -7,7 +7,7 @@ type Request = {
 };
 
 class ShowCustomerService extends BaseCustomerService {
-	public async execute({ id }: Request): Promise<CustomerShow> {
+	public async execute({ id }: Request): Promise<CustomerShowType> {
 		const customer = await this.repository.findById(id);
 
 		if (!customer) {

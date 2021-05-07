@@ -1,5 +1,5 @@
 import { generateMd5 } from '@functions/generateMd5';
-import { UploadConfig } from '@shared/types/UploadConfig';
+import { UploadConfigType } from '@shared/types/UploadConfig';
 
 import multer from 'multer';
 import path from 'path';
@@ -7,7 +7,7 @@ import path from 'path';
 const uploadFolder = path.resolve(__dirname, '..', '..', 'uploads');
 const tmpFolder = path.resolve(__dirname, '..', '..', 'temp');
 
-export const uploadConfig: UploadConfig = {
+export const uploadConfig: UploadConfigType = {
 	driver: 'disk',
 	directory: uploadFolder,
 	tmpFolder,

@@ -1,5 +1,5 @@
 import { mailEnv } from '@config/environment';
-import { SendMail } from '@shared/types/SendMail';
+import { SendMailType } from '@shared/types/SendMail';
 import { logging } from '@utils/logging';
 import nodemailer, { TestAccount, Transporter } from 'nodemailer';
 import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
@@ -27,7 +27,7 @@ class EtherealMail {
 		to,
 		subject,
 		templateData
-	}: SendMail): Promise<void> {
+	}: SendMailType): Promise<void> {
 		await this.setup();
 
 		const message = await this.transporter.sendMail({

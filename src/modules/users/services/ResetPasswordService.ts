@@ -1,6 +1,6 @@
 import { authEnv } from '@config/environment';
 import { AppError } from '@shared/errors/AppError';
-import { UserChanged } from '@shared/types/User';
+import { UserChangedType } from '@shared/types/User';
 import { hash } from 'bcryptjs';
 import { addDays, addHours, addMinutes, isAfter } from 'date-fns';
 import { getCustomRepository } from 'typeorm';
@@ -15,7 +15,10 @@ type Request = {
 class ResetPasswordService extends BaseUserService {
 	tokenRepository = getCustomRepository(UserTokenRepository);
 
-	public async execute({ token, password }: Request): Promise<UserChanged> {
+	public async execute({
+		token,
+		password
+	}: Request): Promise<UserChangedType> {
 		const userToken = await this.tokenRepository.findByToken(token);
 
 		if (!userToken) {
