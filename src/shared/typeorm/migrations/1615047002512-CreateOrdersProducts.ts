@@ -23,15 +23,14 @@ export class CreateOrdersProducts1615047002512 implements MigrationInterface {
 						name: 'quantity',
 						type: 'int'
 					},
-
 					{
 						name: 'created_at',
-						type: 'timestamp',
+						type: 'timestamp with time zone',
 						default: 'now()'
 					},
 					{
 						name: 'updated_at',
-						type: 'timestamp',
+						type: 'timestamp with time zone',
 						default: 'now()'
 					}
 				]
