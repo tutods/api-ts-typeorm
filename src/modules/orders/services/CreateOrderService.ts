@@ -1,11 +1,11 @@
-import { IOrderChanged } from '@interfaces/IOrder';
 import { CustomerRepository } from '@modules/customers/typeorm/repositories/CustomerRepository';
 import { ProductRepository } from '@modules/products/typeorm/repositories/ProductRepository';
 import { AppError } from '@shared/errors/AppError';
+import { OrderChanged } from '@shared/types/Order';
 import { getCustomRepository } from 'typeorm';
 import { BaseOrderService } from './BaseOrderService';
 
-interface IRequest {
+type Request = {
 	customerId: string;
 	products: [
 		{
@@ -13,7 +13,7 @@ interface IRequest {
 			quantity: number;
 		}
 	];
-}
+};
 
 class CreateOrderService extends BaseOrderService {
 	protected customerRepository = getCustomRepository(CustomerRepository);
@@ -22,7 +22,7 @@ class CreateOrderService extends BaseOrderService {
 	public async execute({
 		customerId,
 		products
-	}: IRequest): Promise<IOrderChanged> {
+	}: Request): Promise<OrderChanged> {
 		const customer = await this.customerRepository.findById(customerId);
 
 		if (!customer) {

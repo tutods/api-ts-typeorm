@@ -1,6 +1,6 @@
 import { mailEnv } from '@config/environment';
-import { ISendMail } from '@interfaces/ISendMail';
 import { AppError } from '@shared/errors/AppError';
+import { SendMail } from '@shared/types/SendMail';
 import { loggingError } from '@utils/logging';
 import { createTransport, Transporter } from 'nodemailer';
 import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
@@ -25,7 +25,7 @@ class SMTPEmail {
 		to,
 		subject,
 		templateData
-	}: ISendMail): Promise<void> {
+	}: SendMail): Promise<void> {
 		try {
 			await this.transporter.sendMail({
 				from: {

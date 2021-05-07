@@ -1,9 +1,9 @@
-import { IParseMail } from '@interfaces/IParseMail';
+import { ParseMail } from '@shared/types/ParseMail';
 import fs from 'fs';
 import handlebars from 'handlebars';
 
 class HandlebarsMailTemplate {
-	public async parse({ file, variables }: IParseMail): Promise<string> {
+	public async parse({ file, variables }: ParseMail): Promise<string> {
 		const template = await fs.promises.readFile(file, {
 			encoding: 'utf-8'
 		});

@@ -1,19 +1,19 @@
-import { ICustomerChanged } from '@interfaces/ICustomer';
 import { AppError } from '@shared/errors/AppError';
+import { CustomerChanged } from '@shared/types/Customer';
 import { BaseCustomerService } from './BaseCustomerService';
 
-interface IRequest {
+type Request = {
 	id: string;
 	name: string;
 	email: string;
-}
+};
 
 class UpdateCustomerService extends BaseCustomerService {
 	public async execute({
 		id,
 		name,
 		email
-	}: IRequest): Promise<ICustomerChanged> {
+	}: Request): Promise<CustomerChanged> {
 		const customer = await this.repository.findById(id);
 
 		if (!customer) {

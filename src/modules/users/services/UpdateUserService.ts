@@ -1,13 +1,13 @@
-import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
+import { UserChanged } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
-interface IRequest {
+type Request = {
 	id: string;
 	name: string;
 	email: string;
 	password: string;
-}
+};
 
 class UpdateUserService extends BaseUserService {
 	public async execute({
@@ -15,7 +15,7 @@ class UpdateUserService extends BaseUserService {
 		name,
 		email,
 		password
-	}: IRequest): Promise<IUserChanged> {
+	}: Request): Promise<UserChanged> {
 		const user = await this.repository.findById(id);
 
 		if (!user) {

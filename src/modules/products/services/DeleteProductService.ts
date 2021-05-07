@@ -1,13 +1,13 @@
-import { IProductChanged } from '@interfaces/IProduct';
 import { AppError } from '@shared/errors/AppError';
+import { ProductChanged } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
-interface IRequest {
+type Request = {
 	id: string;
-}
+};
 
 class DeleteProductService extends BaseProductService {
-	public async execute({ id }: IRequest): Promise<IProductChanged> {
+	public async execute({ id }: Request): Promise<ProductChanged> {
 		const product = await this.repository.findOne(id);
 
 		if (!product) {

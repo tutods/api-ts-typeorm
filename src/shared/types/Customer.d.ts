@@ -1,29 +1,29 @@
-interface ICustomer {
-	id?: string;
+type Customer = {
+	readonly id?: string;
 	name: string;
 	email: string;
 	created_at?: Date;
 	updated_at?: Date;
-}
+};
 
-interface ICustomerChanged {
+type CustomerChanged = {
 	message: string;
 	code: number;
 	customer: ICustomer;
-}
+};
 
-interface ICustomerList {
+type CustomerList = {
 	count: number;
 	code: number;
 	customers: ICustomer[];
-}
+};
 
-interface ICustomerShow {
+type CustomerShow = {
 	code: number;
 	customer: ICustomer;
-}
+};
 
-interface ICustomerPaginated {
+type CustomerPaginated = {
 	code?: number;
 	from: number;
 	to: number;
@@ -33,12 +33,12 @@ interface ICustomerPaginated {
 	prev_page?: number | null | undefined;
 	next_page?: number | null | undefined;
 	data: ICustomer[];
-}
+};
 
 export {
-	ICustomer,
-	ICustomerChanged,
-	ICustomerList,
-	ICustomerShow,
-	ICustomerPaginated
+	Customer,
+	CustomerChanged,
+	CustomerList,
+	CustomerShow,
+	CustomerPaginated
 };

@@ -1,18 +1,19 @@
 import { authEnv, serverEnv } from '@config/environment';
-import { MailConfig } from '@config/mail/mailConfig';
+import { MailConfig } from '@config/mail/MailConfig';
 import { AppError } from '@shared/errors/AppError';
 import path from 'path';
 import { getCustomRepository } from 'typeorm';
 import { UserTokenRepository } from '../typeorm/repositories/UserTokenRepository';
 import { BaseUserService } from './BaseUserService';
-interface IRequest {
+
+type Request = {
 	email: string;
-}
+};
 
 class SendForgotPasswordService extends BaseUserService {
 	tokenRepository = getCustomRepository(UserTokenRepository);
 
-	public async execute({ email }: IRequest): Promise<void> {
+	public async execute({ email }: Request): Promise<void> {
 		const user = await this.repository.findByEmail(email);
 
 		if (!user) {

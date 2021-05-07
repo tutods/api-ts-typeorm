@@ -1,13 +1,13 @@
-import { IProductShow } from '@interfaces/IProduct';
 import { AppError } from '@shared/errors/AppError';
+import { ProductShow } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
-interface IRequest {
+type Request = {
 	id: string;
-}
+};
 
 class ShowProductService extends BaseProductService {
-	public async execute({ id }: IRequest): Promise<IProductShow> {
+	public async execute({ id }: Request): Promise<ProductShow> {
 		const product = await this.repository.findOne(id);
 
 		if (!product) {

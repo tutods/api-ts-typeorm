@@ -1,13 +1,13 @@
-import { IOrderShow } from '@interfaces/IOrder';
 import { AppError } from '@shared/errors/AppError';
+import { OrderShow } from '@shared/types/Order';
 import { BaseOrderService } from './BaseOrderService';
 
-interface IRequest {
+type Request = {
 	id: string;
-}
+};
 
 class ShowOrderService extends BaseOrderService {
-	public async execute({ id }: IRequest): Promise<IOrderShow> {
+	public async execute({ id }: Request): Promise<OrderShow> {
 		const order = await this.repository.findById(id);
 
 		if (!order) {

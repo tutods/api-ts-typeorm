@@ -1,22 +1,17 @@
-import { IJoiErrors } from '@interfaces/IJoi';
-
-interface IJoiResultErrors {
-	field: string;
-	message: string;
-}
+import { JoiErrors, JoiResultErrors } from '@shared/types/Joi';
 
 class JoiError {
-	public errors: IJoiResultErrors[];
+	public errors: JoiResultErrors[];
 	public readonly code: number;
 
-	constructor(errors: IJoiErrors[], code = 400) {
+	constructor(errors: JoiErrors[], code = 400) {
 		this.errors = this.format(errors);
 
 		this.code = code;
 	}
 
-	private format(errors: IJoiErrors[]): IJoiResultErrors[] {
-		const formatErrors: IJoiResultErrors[] = errors.map((error) => {
+	private format(errors: JoiErrors[]): JoiResultErrors[] {
+		const formatErrors: JoiResultErrors[] = errors.map((error) => {
 			const { message, context } = error;
 
 			return {

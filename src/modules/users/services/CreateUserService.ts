@@ -1,21 +1,21 @@
 import { authEnv } from '@config/environment';
-import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
+import { UserChanged } from '@shared/types/User';
 import { hash } from 'bcryptjs';
 import { BaseUserService } from './BaseUserService';
 
-interface IRequest {
+type Request = {
 	name: string;
 	email: string;
 	password: string;
-}
+};
 
 class CreateUserService extends BaseUserService {
 	public async execute({
 		name,
 		email,
 		password
-	}: IRequest): Promise<IUserChanged> {
+	}: Request): Promise<UserChanged> {
 		const userExists = await this.repository.findByEmail(email);
 
 		if (userExists) {

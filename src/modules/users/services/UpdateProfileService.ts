@@ -1,16 +1,16 @@
 import { authEnv } from '@config/environment';
-import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
+import { UserChanged } from '@shared/types/User';
 import { compare, hash } from 'bcryptjs';
 import { BaseUserService } from './BaseUserService';
 
-interface IRequest {
+type Request = {
 	userId: string;
 	name: string;
 	email: string;
 	password?: string;
 	oldPassword?: string;
-}
+};
 
 class UpdateProfileService extends BaseUserService {
 	public async execute({
@@ -19,7 +19,7 @@ class UpdateProfileService extends BaseUserService {
 		email,
 		password,
 		oldPassword
-	}: IRequest): Promise<IUserChanged> {
+	}: Request): Promise<UserChanged> {
 		const user = await this.repository.findById(userId);
 
 		if (!user) {

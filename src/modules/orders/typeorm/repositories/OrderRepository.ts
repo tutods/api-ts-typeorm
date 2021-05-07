@@ -2,16 +2,16 @@ import { Customer } from '@modules/customers/typeorm/entities/Customer';
 import { EntityRepository, Repository } from 'typeorm';
 import { Order } from '../entities/Order';
 
-interface IProduct {
+type Product = {
 	product_id: string;
 	quantity: number;
 	price: number;
-}
+};
 
-interface ICreateRequest {
+type CreateRequest = {
 	customer: Customer;
-	products: IProduct[];
-}
+	products: Product[];
+};
 
 @EntityRepository(Order)
 class OrderRepository extends Repository<Order> {
@@ -26,7 +26,7 @@ class OrderRepository extends Repository<Order> {
 	public async createOrder({
 		customer,
 		products
-	}: ICreateRequest): Promise<Order> {
+	}: CreateRequest): Promise<Order> {
 		const order = this.create({ customer, order_products: products });
 
 		await this.save(order);

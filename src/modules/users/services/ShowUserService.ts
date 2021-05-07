@@ -1,13 +1,13 @@
-import { IUserShow } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
+import { UserShow } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
-interface IRequest {
+type Request = {
 	id: string;
-}
+};
 
 class ShowUserService extends BaseUserService {
-	public async execute({ id }: IRequest): Promise<IUserShow> {
+	public async execute({ id }: Request): Promise<UserShow> {
 		const user = await this.repository.findById(id);
 
 		if (!user) {

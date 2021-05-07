@@ -19,7 +19,7 @@ const controller = new UserController();
 const avatarController = new userAvatarController();
 
 const upload = multer({
-	...uploadConfig,
+	storage: uploadConfig.multer.storage,
 	limits: {
 		fileSize: 2500000
 	},

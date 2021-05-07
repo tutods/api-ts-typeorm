@@ -1,4 +1,4 @@
-interface ITokenPlayload {
+type TokenPlayload = {
 	name: string;
 	email: string;
 	avatar?: string;
@@ -7,6 +7,6 @@ interface ITokenPlayload {
 	iat: number;
 	exp: number;
 	sub: string;
-}
+};
 
-export { ITokenPlayload };
+export { TokenPlayload };

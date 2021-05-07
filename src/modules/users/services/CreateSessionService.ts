@@ -1,18 +1,18 @@
 import { authEnv } from '@config/environment';
-import { IAuthSession } from '@interfaces/IAuth';
 import { AppError } from '@shared/errors/AppError';
+import { AuthSession } from '@shared/types/Auth';
 import { compare } from 'bcryptjs';
 import { classToClass } from 'class-transformer';
 import { sign } from 'jsonwebtoken';
 import { BaseUserService } from './BaseUserService';
 
-interface IRequest {
+type Request = {
 	email: string;
 	password: string;
-}
+};
 
 class CreateSessionService extends BaseUserService {
-	public async execute({ email, password }: IRequest): Promise<IAuthSession> {
+	public async execute({ email, password }: Request): Promise<AuthSession> {
 		const user = await this.repository.findByEmail(email);
 
 		if (!user) {

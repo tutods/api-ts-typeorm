@@ -1,19 +1,19 @@
-import { IProductChanged } from '@interfaces/IProduct';
 import { AppError } from '@shared/errors/AppError';
+import { ProductChanged } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
-interface IRequest {
+type Request = {
 	name: string;
 	price: number;
 	quantity: number;
-}
+};
 
 class CreateProductService extends BaseProductService {
 	public async execute({
 		name,
 		price,
 		quantity
-	}: IRequest): Promise<IProductChanged> {
+	}: Request): Promise<ProductChanged> {
 		const productExists = await this.repository.findByName(name);
 
 		if (productExists) {

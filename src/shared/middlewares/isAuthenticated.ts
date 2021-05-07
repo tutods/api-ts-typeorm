@@ -1,6 +1,6 @@
 import { authEnv } from '@config/environment';
-import { ITokenPlayload } from '@interfaces/ITokenPlayload';
 import { AppError } from '@shared/errors/AppError';
+import { TokenPlayload } from '@shared/types/TokenPlayload';
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
@@ -18,7 +18,7 @@ export const isAuthenticated = (
 	const [, token] = authHeader.split(' '); // get only token (ex.: Bearer <token>)
 
 	try {
-		const decodeToken = verify(token, authEnv.secret) as ITokenPlayload;
+		const decodeToken = verify(token, authEnv.secret) as TokenPlayload;
 
 		const {
 			exp,

@@ -1,13 +1,13 @@
-import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
+import { UserChanged } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
 
-interface IRequest {
+type Request = {
 	id: string;
-}
+};
 
 class DeleteUserService extends BaseUserService {
-	public async execute({ id }: IRequest): Promise<IUserChanged> {
+	public async execute({ id }: Request): Promise<UserChanged> {
 		const user = await this.repository.findById(id);
 
 		if (!user) {

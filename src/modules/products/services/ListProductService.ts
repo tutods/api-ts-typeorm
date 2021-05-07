@@ -1,12 +1,10 @@
-import { IProduct, IProductList } from '@interfaces/IProduct';
+import { Product, ProductList } from '@shared/types/Product';
 import { BaseProductService } from './BaseProductService';
 
 class ListProductService extends BaseProductService {
-	public async execute(): Promise<IProductList> {
+	public async execute(): Promise<ProductList> {
 		// Get products from Redis (if exists)
-		let products = await this.redisCache.recover<IProduct[]>(
-			'PRODUCT_LIST'
-		);
+		let products = await this.redisCache.recover<Product[]>('PRODUCT_LIST');
 
 		if (!products) {
 			products = await this.repository.find();

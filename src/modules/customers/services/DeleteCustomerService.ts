@@ -1,13 +1,13 @@
-import { ICustomerChanged } from '@interfaces/ICustomer';
 import { AppError } from '@shared/errors/AppError';
+import { CustomerChanged } from '@shared/types/Customer';
 import { BaseCustomerService } from './BaseCustomerService';
 
-interface IRequest {
+type Request = {
 	customerId: string;
-}
+};
 
 class DeleteCustomerService extends BaseCustomerService {
-	public async execute({ customerId }: IRequest): Promise<ICustomerChanged> {
+	public async execute({ customerId }: Request): Promise<CustomerChanged> {
 		const customer = await this.repository.findById(customerId);
 
 		if (!customer) {

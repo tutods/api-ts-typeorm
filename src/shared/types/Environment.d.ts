@@ -1,9 +1,9 @@
-export interface IServerEnv {
+type ServerEnv = {
 	host: string;
 	port: number;
-}
+};
 
-export interface IDatabaseEnv {
+type DatabaseEnv = {
 	host: string;
 	port: number;
 	user: {
@@ -11,9 +11,9 @@ export interface IDatabaseEnv {
 		password: string;
 	};
 	database: string;
-}
+};
 
-export interface IAuthEnv {
+type AuthEnv = {
 	salt: number;
 	secret: string;
 	expires: string;
@@ -21,15 +21,15 @@ export interface IAuthEnv {
 		expires: number;
 		time: string;
 	};
-}
+};
 
-export interface IRedisEnv {
+type RedisEnv = {
 	host: string;
 	port: number;
 	password: string;
-}
+};
 
-export interface IMailEnv {
+type MailEnv = {
 	driver: string;
 	mail?: string;
 	password?: string;
@@ -42,4 +42,6 @@ export interface IMailEnv {
 		email: string;
 		name: string;
 	};
-}
+};
+
+export { ServerEnv, DatabaseEnv, AuthEnv, RedisEnv, MailEnv };

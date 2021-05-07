@@ -1,14 +1,14 @@
 import { DiskStorageProvider } from '@config/upload/DiskStorageProvider';
-import { IUserChanged } from '@interfaces/IUser';
 import { AppError } from '@shared/errors/AppError';
+import { UserChanged } from '@shared/types/User';
 import { BaseUserService } from './BaseUserService';
-interface IRequest {
+type Request = {
 	id: string;
 	avatar: string;
-}
+};
 
 class UpdateUserAvatarService extends BaseUserService {
-	public async execute({ avatar, id }: IRequest): Promise<IUserChanged> {
+	public async execute({ avatar, id }: Request): Promise<UserChanged> {
 		const storageProvider = new DiskStorageProvider();
 
 		const user = await this.repository.findById(id);
