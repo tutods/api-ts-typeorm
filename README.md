@@ -67,6 +67,7 @@ I have some changes in my project, like:
 -   Create middlewares to **Joi Validation** (`shared/middlewares/joiValidation.ts`);
 -   I don't create configs to AWS S3;
 -   Use **`rimraf`** package to delete `dist/` folder before Babel create build;
+-   I don't create the JEST tests, I leave that to **ToDo** work.
 
 <h2 style="margin-top: 20px; font-weight: 300">📄 Notes</h2>
 
@@ -94,6 +95,7 @@ I have some changes in my project, like:
 
 1. Swagger Documentation
 2. Wiki in **GitHub**
+3. Use **JEST** tests
 
 <h2 style="margin-top: 20px; font-weight: 300">🔗 Other Links</h2>
 
